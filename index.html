@@ -238,13 +238,14 @@
 
     .contact-strip {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 80px;
-      width: 440px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      width: 100%;
+      max-width: 440px;
       height: 84px;
-      max-width: 100%;
       align-items: center;
-      gap: 8px;
+      gap: 14px;
       box-sizing: border-box;
+      margin: 0 auto;
     }
 
     .contact-list {
@@ -278,11 +279,11 @@
     .quick-socials {
       display: flex;
       gap: 8px;
-      width: 80px;
+      width: max-content;
       justify-content: flex-end;
-      padding-right: 0;
       align-items: center;
       justify-self: end;
+      margin-left: auto;
       flex: 0 0 auto;
     }
 
@@ -720,7 +721,7 @@
       .hero-media {
         top: 7.045%;
         left: 50%;
-        width: min(100%, 340px);
+        width: min(calc(100% - 24px), 340px);
         height: auto;
         aspect-ratio: 340 / 258;
         transform: translateX(-50%);
@@ -729,6 +730,11 @@
       .hero-media img,
       .hero-media video {
         height: 100%;
+      }
+
+      .hero-media video {
+        object-fit: contain;
+        object-position: center top;
       }
 
       .hero-banner-frame {
@@ -781,6 +787,7 @@
         grid-template-columns: minmax(0, 1fr) auto;
         gap: 12px;
         width: 100%;
+        max-width: 440px;
         height: auto;
         align-items: center;
       }
@@ -788,7 +795,6 @@
       .quick-socials {
         width: auto;
         margin-left: 0;
-        padding-right: 0;
         justify-self: end;
       }
 
