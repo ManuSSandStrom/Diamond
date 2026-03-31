@@ -120,6 +120,26 @@
       overflow: hidden;
     }
 
+    .hero-header::before,
+    .hero-header::after {
+      content: "";
+      position: absolute;
+      top: 293px;
+      width: 8px;
+      height: 218px;
+      background: #000000;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-header::before {
+      left: 0;
+    }
+
+    .hero-header::after {
+      right: 0;
+    }
+
     .hero-media {
       width: 340px;
       height: 258px;
@@ -603,6 +623,13 @@
         width: 100%;
         height: auto;
         aspect-ratio: 500 / 511;
+      }
+
+      .hero-header::before,
+      .hero-header::after {
+        top: 57.339%;
+        height: 42.661%;
+        width: 6px;
       }
 
       .hero-media {
