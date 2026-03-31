@@ -638,54 +638,44 @@
 
     .mobile-sticky__actions {
       display: grid;
-      grid-template-columns: 56px 56px 56px minmax(0, 1fr);
-      gap: 12px;
+      grid-template-columns: 52px 52px minmax(0, 1fr);
+      gap: 10px;
       align-items: center;
     }
 
-    .mobile-sticky__social,
-    .mobile-sticky__pdf {
+    .mobile-sticky__social {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
       box-shadow: 0 10px 18px rgba(7, 22, 65, 0.1);
     }
 
     .mobile-sticky__social img {
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
     }
 
-    .mobile-sticky__pdf {
-      background: linear-gradient(180deg, #ff0b74 0%, #d80060 100%);
-    }
-
-    .mobile-sticky__pdf img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .mobile-sticky__social.is-static,
-    .mobile-sticky__pdf.is-disabled {
+    .mobile-sticky__social.is-static {
       opacity: 0.48;
       box-shadow: none;
     }
 
     .mobile-sticky__save {
       min-width: 0;
-      height: 56px;
-      padding: 0 18px;
+      height: 52px;
+      padding: 0 16px;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 11px;
       border-radius: 14px;
       background: #0a3159;
       color: #ffffff;
       box-shadow: 0 10px 18px rgba(7, 22, 65, 0.14);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
       line-height: 1;
       white-space: nowrap;
@@ -920,31 +910,25 @@
       }
 
       .mobile-sticky__actions {
-        grid-template-columns: 48px 48px 48px minmax(0, 1fr);
-        gap: 10px;
+        grid-template-columns: 46px 46px minmax(0, 1fr);
+        gap: 8px;
       }
 
-      .mobile-sticky__social,
-      .mobile-sticky__pdf {
-        width: 48px;
-        height: 48px;
-        border-radius: 16px;
+      .mobile-sticky__social {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
       }
 
       .mobile-sticky__social img {
-        width: 48px;
-        height: 48px;
-      }
-
-      .mobile-sticky__pdf img {
-        width: 26px;
-        height: 26px;
+        width: 46px;
+        height: 46px;
       }
 
       .mobile-sticky__save {
-        height: 48px;
-        padding: 0 14px;
-        gap: 10px;
+        height: 46px;
+        padding: 0 13px;
+        gap: 9px;
         font-size: 14px;
       }
 
@@ -1128,9 +1112,6 @@
         <a id="mobileWhatsappLink" class="mobile-sticky__social" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp">
           <img id="mobileWhatsappIcon" src="" alt="WhatsApp">
         </a>
-        <a id="mobileBrochureLink" class="mobile-sticky__pdf" href="#" target="_blank" rel="noreferrer" aria-label="Download brochure">
-          <img id="mobilePdfIcon" src="" alt="Download brochure">
-        </a>
         <button id="mobileSaveContactAction" class="mobile-sticky__save" type="button" aria-label="Add to contacts">
           <span class="mobile-sticky__save-glyph" aria-hidden="true"></span>
           <span>Add to <strong>Contacts</strong></span>
@@ -1157,7 +1138,6 @@
       whatsappIcon: document.getElementById("whatsappIcon"),
       mobileLinkedinIcon: document.getElementById("mobileLinkedinIcon"),
       mobileWhatsappIcon: document.getElementById("mobileWhatsappIcon"),
-      mobilePdfIcon: document.getElementById("mobilePdfIcon"),
       exchangeImage: document.getElementById("exchangeImage"),
       saveImage: document.getElementById("saveImage"),
       shareIcon: document.getElementById("shareIcon"),
@@ -1189,7 +1169,6 @@
       mobileSaveContactAction: document.getElementById("mobileSaveContactAction"),
       shareAction: document.getElementById("shareAction"),
       brochureLink: document.getElementById("brochureLink"),
-      mobileBrochureLink: document.getElementById("mobileBrochureLink"),
       phoneLinkSecondary: document.getElementById("phoneLinkSecondary"),
       emailLinkSecondary: document.getElementById("emailLinkSecondary"),
       websiteLink: document.getElementById("websiteLink"),
@@ -1372,7 +1351,7 @@
     }
 
     async function configureBrochureLink(pdfPath) {
-      const brochureLinks = [elements.brochureLink, elements.mobileBrochureLink].filter(Boolean);
+      const brochureLinks = [elements.brochureLink].filter(Boolean);
 
       if (!pdfPath) {
         brochureLinks.forEach(function (link) {
@@ -1436,7 +1415,6 @@
       setImage(elements.whatsappIcon, assets.whatsappIcon, "WhatsApp icon");
       setImage(elements.mobileLinkedinIcon, assets.linkedinIcon, "LinkedIn");
       setImage(elements.mobileWhatsappIcon, assets.whatsappIcon, "WhatsApp");
-      setImage(elements.mobilePdfIcon, assets.pdfIcon, "Download brochure");
       setImage(elements.exchangeImage, assets.exchangeButton, "Exchange contact");
       setImage(elements.saveImage, assets.saveButton, "Save to contacts");
       setImage(elements.shareIcon, assets.shareIcon, "Share");
