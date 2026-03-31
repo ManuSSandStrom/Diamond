@@ -120,26 +120,6 @@
       overflow: hidden;
     }
 
-    .hero-header::before,
-    .hero-header::after {
-      content: "";
-      position: absolute;
-      top: 293px;
-      width: 8px;
-      height: 218px;
-      background: #000000;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .hero-header::before {
-      left: 0;
-    }
-
-    .hero-header::after {
-      right: 0;
-    }
-
     .hero-media {
       width: 340px;
       height: 258px;
@@ -164,15 +144,23 @@
       object-fit: cover;
     }
 
-    .hero-banner {
+    .hero-banner-frame {
       position: absolute;
       top: 293px;
       left: 50%;
       z-index: 2;
       width: 500px;
       height: 218px;
-      max-width: 100%;
       transform: translateX(-50%);
+      overflow: hidden;
+    }
+
+    .hero-banner {
+      display: block;
+      width: 508px;
+      height: 218px;
+      max-width: none;
+      margin-left: -4px;
     }
 
     .profile-wrap {
@@ -625,13 +613,6 @@
         aspect-ratio: 500 / 511;
       }
 
-      .hero-header::before,
-      .hero-header::after {
-        top: 57.339%;
-        height: 42.661%;
-        width: 6px;
-      }
-
       .hero-media {
         top: 7.045%;
         left: 50%;
@@ -646,13 +627,19 @@
         height: 100%;
       }
 
-      .hero-banner {
+      .hero-banner-frame {
         top: 57.339%;
         left: 0;
         width: 100%;
         height: auto;
         aspect-ratio: 500 / 218;
         transform: none;
+      }
+
+      .hero-banner {
+        width: calc(100% + 8px);
+        height: 100%;
+        margin-left: -4px;
       }
 
       .section-pad {
@@ -759,7 +746,9 @@
                 Sorry, your browser doesn't support HTML5 video tag.
               </video>
             </div>
-            <img id="bannerImage" class="hero-banner" src="" alt="Kushal Diamonds banner">
+            <div class="hero-banner-frame">
+              <img id="bannerImage" class="hero-banner" src="" alt="Kushal Diamonds banner">
+            </div>
           </div>
           <div class="profile-wrap">
             <img id="profilePhoto" class="profile-photo" src="" alt="Profile photo">
