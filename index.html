@@ -719,9 +719,9 @@
       }
 
       .hero-media {
-        top: 7.045%;
+        top: 5.2%;
         left: 50%;
-        width: min(calc(100% - 24px), 340px);
+        width: min(calc(100% - 44px), 304px);
         height: auto;
         aspect-ratio: 340 / 258;
         transform: translateX(-50%);
@@ -732,9 +732,12 @@
         height: 100%;
       }
 
+      .hero-media img,
       .hero-media video {
         object-fit: contain;
         object-position: center top;
+        transform: scale(0.88);
+        transform-origin: center top;
       }
 
       .hero-banner-frame {
