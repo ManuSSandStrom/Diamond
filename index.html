@@ -102,7 +102,7 @@
 
     .hero-header {
       width: 500px;
-      height: 308px;
+      height: 356px;
       max-width: 100%;
       margin: 0 auto;
       position: relative;
@@ -114,9 +114,9 @@
       width: 340px;
       height: 258px;
       position: absolute;
-      top: 14px;
+      top: 18px;
       left: 50%;
-      z-index: 2;
+      z-index: 1;
       transform: translateX(-50%);
       display: block;
       background: #000000;
@@ -136,21 +136,20 @@
 
     .hero-banner {
       position: absolute;
-      left: 0;
-      right: 0;
+      left: 50%;
       bottom: 0;
-      z-index: 1;
+      z-index: 2;
       width: 500px;
       height: 218px;
-      max-width: 100%;
-      margin: 0 auto;
-      object-fit: cover;
+      max-width: none;
+      transform: translateX(-50%);
+      object-fit: contain;
     }
 
     .profile-wrap {
       display: flex;
       justify-content: center;
-      margin-top: -54px;
+      margin-top: -58px;
       position: relative;
       z-index: 2;
     }
@@ -171,24 +170,28 @@
     }
 
     .identity {
-      padding-top: 16px;
+      width: 300px;
+      height: 83px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding-top: 12px;
       text-align: center;
     }
 
     .name {
       color: #000000;
-      font-size: 35px;
+      font-size: 32px;
       font-weight: 900;
-      line-height: 1.02;
+      line-height: 1.05;
       letter-spacing: -0.02em;
     }
 
     .role {
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--gold);
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 500;
-      line-height: 1.15;
+      line-height: 1.1;
     }
 
     .tagline {
@@ -593,13 +596,14 @@
 
       .hero-banner {
         position: relative;
-        left: auto;
-        right: auto;
+        left: 50%;
         bottom: auto;
-        z-index: 1;
+        z-index: 2;
         width: 100%;
         height: auto;
-        margin-top: 82px;
+        max-width: 500px;
+        margin-top: 138px;
+        transform: translateX(-50%);
       }
 
       .section-pad {
@@ -620,6 +624,11 @@
         width: 100px;
         height: 100px;
         border-width: 6px;
+      }
+
+      .identity {
+        width: 100%;
+        height: auto;
       }
 
       .contact-strip {
