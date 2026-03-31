@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jaykumar Shah | Kushal Diamonds">
+  <meta property="og:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <title>Jaykumar Shah | Kushal Diamonds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --page-bg: #0b0700;
+      --card-bg: #ffffff;
+      --navy: #051042;
+      --gold: #cf9115;
+      --line: rgba(4, 17, 65, 0.13);
+      --muted: #696969;
+      --soft-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --page-bg-image: url("Assets/PageBg.svg");
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(11, 7, 0, 0.98), rgba(11, 7, 0, 0.98)),
+        var(--page-bg-image) center top / cover no-repeat fixed;
+      color: var(--navy);
+      font-family: "Roboto", sans-serif;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .shell {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 0 12px 28px;
+    }
+
+    .card {
+      width: min(100%, 500px);
+      background: var(--card-bg);
+      border-radius: 0 0 24px 24px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .loading {
+      padding: 48px 40px;
+      color: #ffffff;
+      background: #111111;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .is-static {
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .hero-header {
+      width: 500px;
+      height: 308px;
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      width: 340px;
+      height: 258px;
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      z-index: 2;
+      transform: translateX(-50%);
+      display: block;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .hero-media img,
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-media video {
+      object-fit: cover;
+    }
+
+    .hero-banner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      width: 500px;
+      height: 218px;
+      max-width: 100%;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    .profile-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: -54px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      border: 7px solid #f6f6f6;
+      object-fit: cover;
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .section-pad {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .identity {
+      padding-top: 16px;
+      text-align: center;
+    }
+
+    .name {
+      color: #000000;
+      font-size: 35px;
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      margin-top: 8px;
+      color: var(--gold);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .tagline {
+      margin: 14px auto 0;
+      max-width: 360px;
+      color: var(--muted);
+      white-space: pre-line;
+      font-size: 15px;
+      line-height: 1.22;
+      font-weight: 500;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 20px;
+    }
+
+    .contact-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 86px;
+      width: 440px;
+      height: 110px;
+      max-width: 100%;
+      align-items: center;
+      gap: 14px;
+      box-sizing: border-box;
+    }
+
+    .contact-list {
+      width: 100%;
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .contact-row img {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto;
+    }
+
+    .contact-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111111;
+      overflow-wrap: anywhere;
+      line-height: 1.2;
+    }
+
+    .quick-socials {
+      display: flex;
+      gap: 10px;
+      width: 86px;
+      justify-content: flex-end;
+      padding-right: 0;
+      align-items: center;
+      justify-self: end;
+      flex: 0 0 auto;
+    }
+
+    .quick-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: transform 0.18s ease;
+    }
+
+    .quick-social:hover,
+    .graphic-action:hover,
+    .company-social:hover,
+    .brochure-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .quick-social img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .action-row {
+      display: grid;
+      width: 440px;
+      max-width: 100%;
+      grid-template-columns: 1fr 1fr 44px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .graphic-action,
+    .share-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .graphic-action img {
+      width: 100%;
+      height: auto;
+    }
+
+    .share-action img {
+      width: 44px;
+      height: 44px;
+    }
+
+    .trust-copy {
+      position: relative;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 4px;
+    }
+
+    .trust-badge-wrap {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 10px;
+      opacity: 1;
+    }
+
+    .trust-badge {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      background: transparent 0% 0% no-repeat padding-box;
+      opacity: 1;
+    }
+
+    .trust-top {
+      color: var(--navy);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: 0.02em;
+    }
+
+    .trust-bottom {
+      margin-top: 1px;
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 0.96;
+      letter-spacing: 0.01em;
+    }
+
+    .service-block {
+      display: flex;
+      justify-content: center;
+    }
+
+    .feature-image {
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 16px;
+    }
+
+    .feature-image-frame {
+      width: 440px;
+      height: 320px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      opacity: 1;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .feature-image img {
+      width: 440px;
+      height: 320px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .service-block-frame {
+      width: 440px;
+      height: 245px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      opacity: 1;
+      flex: 0 0 auto;
+    }
+
+    .service-block img {
+      width: 440px;
+      height: 245px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .about-title {
+      width: 219px;
+      height: 37px;
+      max-width: 100%;
+      text-align: left;
+      font-family: "Roboto", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 0;
+      color: var(--navy);
+      opacity: 1;
+    }
+
+    .about-copy {
+      margin-top: 12px;
+      width: 385px;
+      min-height: 50px;
+      max-width: 100%;
+      text-align: left;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--navy);
+      font-weight: 400;
+      opacity: 1;
+    }
+
+    .about-copy strong {
+      font-weight: 800;
+    }
+
+    .brochure-row {
+      width: 430px;
+      height: 110px;
+      max-width: 100%;
+      display: block;
+      padding-top: 24px;
+    }
+
+    .brochure-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 430px;
+      height: 110px;
+      max-width: 100%;
+      flex: 0 0 auto;
+    }
+
+    .brochure-link img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .brochure-line {
+      display: none;
+    }
+
+    .brochure-link.is-disabled {
+      pointer-events: none;
+      opacity: 0.98;
+    }
+
+    .address-block {
+      padding-top: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-secondary {
+      width: 228px;
+      height: 53px;
+      max-width: 100%;
+      display: grid;
+      gap: 5px;
+      align-content: start;
+      opacity: 1;
+    }
+
+    .address-text {
+      white-space: pre-line;
+      width: 424px;
+      max-width: 100%;
+      text-align: left;
+      font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: var(--navy);
+      font-weight: 400;
+      opacity: 1;
+    }
+
+    .contact-inline {
+      display: inline-block;
+      width: 228px;
+      max-width: 100%;
+      font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      opacity: 1;
+    }
+
+    .website-row {
+      width: 440px;
+      max-width: 100%;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    .website-row strong {
+      font-weight: 800;
+    }
+
+    .company-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 440px;
+      height: 70px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .company-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+    }
+
+    .company-social img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      padding-top: 4px;
+      padding-bottom: 18px;
+      width: 440px;
+      height: 90px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer img {
+      width: 166px;
+      height: auto;
+    }
+
+    .status {
+      margin: 0 38px 34px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #fff0cf;
+      color: #6f4c00;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .card {
+        border-radius: 0 0 24px 24px;
+      }
+
+      .hero-header {
+        width: 100%;
+        height: auto;
+      }
+
+      .hero-media {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        width: min(100%, 340px);
+        height: auto;
+        aspect-ratio: 340 / 258;
+        margin-top: 0;
+        transform: translateX(-50%);
+      }
+
+      .hero-media img,
+      .hero-media video {
+        height: 100%;
+      }
+
+      .hero-banner {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        z-index: 1;
+        width: 100%;
+        height: auto;
+        margin-top: 82px;
+      }
+
+      .section-pad {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .divider {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .profile-wrap {
+        margin-top: -48px;
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-width: 6px;
+      }
+
+      .contact-strip {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        height: auto;
+      }
+
+      .quick-socials {
+        margin-left: 0;
+        padding-right: 0;
+      }
+
+      .action-row {
+        grid-template-columns: 1fr;
+      }
+
+      .graphic-action,
+      .share-action {
+        justify-content: flex-start;
+      }
+
+      .brochure-row {
+        width: 100%;
+        height: auto;
+      }
+
+      .brochure-link {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 430 / 110;
+      }
+
+      .feature-image-frame,
+      .feature-image img,
+      .service-block-frame,
+      .service-block img {
+        width: 100%;
+        height: auto;
+      }
+
+      .address-text {
+        width: 100%;
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      .contact-secondary,
+      .contact-inline {
+        width: 100%;
+      }
+
+      .contact-inline {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      .footer img {
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <main class="card">
+      <div id="loadingState" class="loading">Loading Profile</div>
+
+      <div id="contentState" class="hidden">
+        <section class="hero">
+          <div class="hero-header">
+            <div class="hero-media">
+              <video id="heroVideo" playsinline autoplay muted loop preload="metadata" poster="">
+                <source id="heroVideoSource" src="" type="video/webm">
+                Sorry, your browser doesn't support HTML5 video tag.
+              </video>
+            </div>
+            <img id="bannerImage" class="hero-banner" src="" alt="Kushal Diamonds banner">
+          </div>
+          <div class="profile-wrap">
+            <img id="profilePhoto" class="profile-photo" src="" alt="Profile photo">
+          </div>
+        </section>
+
+        <section class="identity section-pad">
+          <h1 id="personName" class="name"></h1>
+          <p id="personRole" class="role"></p>
+          <p id="tagline" class="tagline"></p>
+        </section>
+
+        <hr class="divider">
+
+        <section class="contact-strip section-pad">
+          <div class="contact-list">
+            <a id="phoneLink" class="contact-row" href="#">
+              <img id="phoneIcon" src="" alt="Phone icon">
+              <span id="phoneText" class="contact-text"></span>
+            </a>
+
+            <a id="emailLink" class="contact-row" href="#">
+              <img id="emailIcon" src="" alt="Email icon">
+              <span id="emailText" class="contact-text"></span>
+            </a>
+          </div>
+
+          <div class="quick-socials">
+            <a id="linkedinLink" class="quick-social" href="#" target="_blank" rel="noreferrer">
+              <img id="linkedinIcon" src="" alt="LinkedIn icon">
+            </a>
+            <a id="whatsappLink" class="quick-social" href="#" target="_blank" rel="noreferrer">
+              <img id="whatsappIcon" src="" alt="WhatsApp icon">
+            </a>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="action-row section-pad">
+          <button id="exchangeAction" class="graphic-action" type="button" aria-label="Exchange contact">
+            <img id="exchangeImage" src="" alt="Exchange Contact">
+          </button>
+          <button id="saveContactAction" class="graphic-action" type="button" aria-label="Save to contacts">
+            <img id="saveImage" src="" alt="Save to Contacts">
+          </button>
+          <button id="shareAction" class="share-action" type="button" aria-label="Share profile">
+            <img id="shareIcon" src="" alt="Share">
+          </button>
+        </section>
+
+        <hr class="divider">
+
+        <section class="trust-copy section-pad">
+          <div id="trustBadgeWrap" class="trust-badge-wrap hidden">
+            <img id="trustBadge" class="trust-badge" src="" alt="Trust badge">
+          </div>
+          <p id="trustTop" class="trust-top"></p>
+          <h2 id="trustBottom" class="trust-bottom"></h2>
+        </section>
+
+        <section class="feature-image section-pad">
+          <div class="feature-image-frame">
+            <img id="featureImage" src="" alt="Featured diamond">
+          </div>
+        </section>
+
+        <section class="service-block section-pad">
+          <div class="service-block-frame">
+            <img id="serviceBlockImage" src="" alt="Diamond services">
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="section-pad">
+          <h2 id="aboutTitle" class="about-title"></h2>
+          <p id="aboutDescription" class="about-copy"></p>
+
+          <div class="brochure-row">
+            <a id="brochureLink" class="brochure-link" href="#" target="_blank" rel="noreferrer">
+              <img id="brochureButton" src="" alt="Download brochure">
+            </a>
+            <span class="brochure-line" aria-hidden="true"></span>
+          </div>
+        </section>
+
+        <section class="address-block section-pad">
+          <p id="addressText" class="address-text"></p>
+          <div class="contact-secondary">
+            <a id="phoneLinkSecondary" class="contact-inline" href="#"></a>
+            <a id="emailLinkSecondary" class="contact-inline" href="#"></a>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="website-row section-pad">
+          <a id="websiteLink" href="#" target="_blank" rel="noreferrer">
+            <span id="websiteText"></span>
+          </a>
+        </section>
+
+        <hr class="divider">
+
+        <section class="company-socials section-pad">
+          <a id="youtubeLink" class="company-social" href="#" target="_blank" rel="noreferrer">
+            <img id="youtubeIcon" src="" alt="YouTube">
+          </a>
+          <a id="facebookLink" class="company-social" href="#" target="_blank" rel="noreferrer">
+            <img id="facebookIcon" src="" alt="Facebook">
+          </a>
+          <a id="instagramLink" class="company-social" href="#" target="_blank" rel="noreferrer">
+            <img id="instagramIcon" src="" alt="Instagram">
+          </a>
+          <a id="companyLinkedinLink" class="company-social" href="#" target="_blank" rel="noreferrer">
+            <img id="companyLinkedinIcon" src="" alt="LinkedIn">
+          </a>
+        </section>
+
+        <hr class="divider">
+
+        <footer class="footer section-pad">
+          <a id="poweredByLink" href="#" target="_blank" rel="noreferrer">
+            <img id="poweredByImage" src="" alt="Powered by GoodUX">
+          </a>
+        </footer>
+
+        <div id="statusMessage" class="status hidden"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const elements = {
+      loadingState: document.getElementById("loadingState"),
+      contentState: document.getElementById("contentState"),
+      statusMessage: document.getElementById("statusMessage"),
+      bannerImage: document.getElementById("bannerImage"),
+      heroVideo: document.getElementById("heroVideo"),
+      heroVideoSource: document.getElementById("heroVideoSource"),
+      profilePhoto: document.getElementById("profilePhoto"),
+      personName: document.getElementById("personName"),
+      personRole: document.getElementById("personRole"),
+      tagline: document.getElementById("tagline"),
+      phoneIcon: document.getElementById("phoneIcon"),
+      emailIcon: document.getElementById("emailIcon"),
+      linkedinIcon: document.getElementById("linkedinIcon"),
+      whatsappIcon: document.getElementById("whatsappIcon"),
+      exchangeImage: document.getElementById("exchangeImage"),
+      saveImage: document.getElementById("saveImage"),
+      shareIcon: document.getElementById("shareIcon"),
+      trustBadgeWrap: document.getElementById("trustBadgeWrap"),
+      trustBadge: document.getElementById("trustBadge"),
+      featureImage: document.getElementById("featureImage"),
+      serviceBlockImage: document.getElementById("serviceBlockImage"),
+      brochureButton: document.getElementById("brochureButton"),
+      youtubeIcon: document.getElementById("youtubeIcon"),
+      facebookIcon: document.getElementById("facebookIcon"),
+      instagramIcon: document.getElementById("instagramIcon"),
+      companyLinkedinIcon: document.getElementById("companyLinkedinIcon"),
+      poweredByImage: document.getElementById("poweredByImage"),
+      phoneText: document.getElementById("phoneText"),
+      emailText: document.getElementById("emailText"),
+      trustTop: document.getElementById("trustTop"),
+      trustBottom: document.getElementById("trustBottom"),
+      aboutTitle: document.getElementById("aboutTitle"),
+      aboutDescription: document.getElementById("aboutDescription"),
+      addressText: document.getElementById("addressText"),
+      phoneLink: document.getElementById("phoneLink"),
+      emailLink: document.getElementById("emailLink"),
+      linkedinLink: document.getElementById("linkedinLink"),
+      whatsappLink: document.getElementById("whatsappLink"),
+      exchangeAction: document.getElementById("exchangeAction"),
+      saveContactAction: document.getElementById("saveContactAction"),
+      shareAction: document.getElementById("shareAction"),
+      brochureLink: document.getElementById("brochureLink"),
+      phoneLinkSecondary: document.getElementById("phoneLinkSecondary"),
+      emailLinkSecondary: document.getElementById("emailLinkSecondary"),
+      websiteLink: document.getElementById("websiteLink"),
+      websiteText: document.getElementById("websiteText"),
+      youtubeLink: document.getElementById("youtubeLink"),
+      facebookLink: document.getElementById("facebookLink"),
+      instagramLink: document.getElementById("instagramLink"),
+      companyLinkedinLink: document.getElementById("companyLinkedinLink"),
+      poweredByLink: document.getElementById("poweredByLink")
+    };
+
+    const state = {
+      profile: null
+    };
+
+    function setImage(element, src, alt) {
+      if (!element || !src) return;
+      element.src = src;
+      if (alt) element.alt = alt;
+    }
+
+    function setOptionalImage(wrapperElement, imageElement, src, alt) {
+      if (!wrapperElement || !imageElement || !src) {
+        if (wrapperElement) wrapperElement.classList.add("hidden");
+        return;
+      }
+
+      wrapperElement.classList.remove("hidden");
+      imageElement.src = src;
+      if (alt) imageElement.alt = alt;
+      imageElement.onerror = function () {
+        wrapperElement.classList.add("hidden");
+      };
+      imageElement.onload = function () {
+        wrapperElement.classList.remove("hidden");
+      };
+    }
+
+    function setHeroMedia(videoSrc, bannerSrc, posterSrc = "") {
+      setImage(elements.bannerImage, bannerSrc, "Kushal Diamonds banner");
+      elements.heroVideo.setAttribute("poster", posterSrc || "");
+
+      if (!videoSrc) {
+        elements.heroVideo.classList.add("hidden");
+        return;
+      }
+
+      elements.heroVideo.classList.remove("hidden");
+      elements.heroVideoSource.src = videoSrc;
+      elements.heroVideoSource.type = videoSrc.endsWith(".mp4") ? "video/mp4" : "video/webm";
+      elements.heroVideo.load();
+
+      const hideVideo = function () {
+        elements.heroVideo.classList.add("hidden");
+      };
+
+      elements.heroVideo.addEventListener("error", hideVideo, { once: true });
+
+      const playPromise = elements.heroVideo.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(hideVideo);
+      }
+    }
+
+    function normalizeDigits(value) {
+      return String(value || "").replace(/\D/g, "");
+    }
+
+    function joinPhone(countryCode, phoneNumber) {
+      return [countryCode, phoneNumber].filter(Boolean).join(" ").trim();
+    }
+
+    function showStatus(message) {
+      elements.statusMessage.textContent = message;
+      elements.statusMessage.classList.remove("hidden");
+    }
+
+    function hideStatus() {
+      elements.statusMessage.textContent = "";
+      elements.statusMessage.classList.add("hidden");
+    }
+
+    function bindOptionalLink(element, url) {
+      if (!element) return;
+
+      if (url) {
+        element.href = url;
+        element.removeAttribute("aria-disabled");
+        element.classList.remove("is-static");
+        return;
+      }
+
+      element.href = "#";
+      element.setAttribute("aria-disabled", "true");
+      element.classList.add("is-static");
+    }
+
+    function buildVCard(profile) {
+      const fullName = profile.person.name;
+      const companyName = profile.branding.companyName;
+      const role = profile.branding.designation;
+      const email = profile.contact.email;
+      const phone = normalizeDigits(joinPhone(profile.contact.countryCode, profile.contact.phoneNumber));
+      const website = profile.company.websiteUrl || "";
+      const address = (profile.company.addressLines || []).join(", ");
+
+      return [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `FN;CHARSET=UTF-8:${fullName}`,
+        `N;CHARSET=UTF-8:;${fullName};;;`,
+        `ORG;CHARSET=UTF-8:${companyName}`,
+        `TITLE;CHARSET=UTF-8:${role}`,
+        `TEL;TYPE=CELL:+${phone}`,
+        `EMAIL;CHARSET=UTF-8;TYPE=WORK,INTERNET:${email}`,
+        `ADR;CHARSET=UTF-8;TYPE=WORK:;;${address.replace(/,/g, "\\,")};;;;`,
+        website ? `URL;TYPE=WORK;CHARSET=UTF-8:${website}` : "",
+        `REV:${new Date().toISOString()}`,
+        "END:VCARD"
+      ].filter(Boolean).join("\n");
+    }
+
+    function downloadVCard() {
+      if (!state.profile) return;
+
+      const fileName = `${state.profile.person.name.replace(/\s+/g, "-")}.vcf`;
+      const blob = new Blob([buildVCard(state.profile)], { type: "text/vcard;charset=utf-8" });
+      const blobUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = blobUrl;
+      anchor.download = fileName;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(blobUrl);
+    }
+
+    async function shareProfile(mode) {
+      if (!state.profile) return;
+
+      const phoneLabel = joinPhone(state.profile.contact.countryCode, state.profile.contact.phoneNumber);
+      const shareUrl = window.location.href;
+      const shareTitle = `${state.profile.person.name} | ${state.profile.branding.companyName}`;
+      const shareText = mode === "exchange"
+        ? `${state.profile.person.name}\n${state.profile.branding.designation}\n${phoneLabel}\n${state.profile.contact.email}`
+        : `${state.profile.person.name} | ${state.profile.branding.companyName}`;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          });
+          return;
+        }
+
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+          showStatus(mode === "exchange" ? "Contact details copied." : "Profile link copied.");
+          return;
+        }
+
+        showStatus("Sharing is not available in this browser.");
+      } catch (error) {
+        if (error && error.name !== "AbortError") {
+          showStatus("Unable to share right now.");
+        }
+      }
+    }
+
+    async function configureBrochureLink(pdfPath) {
+      if (!pdfPath) {
+        elements.brochureLink.classList.add("is-disabled");
+        elements.brochureLink.removeAttribute("href");
+        return;
+      }
+
+      elements.brochureLink.href = pdfPath;
+      elements.brochureLink.setAttribute("download", "");
+
+      if (!window.location.protocol.startsWith("http")) {
+        return;
+      }
+
+      try {
+        const response = await fetch(pdfPath, { method: "HEAD", cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Missing PDF");
+        }
+      } catch (error) {
+        elements.brochureLink.classList.add("is-disabled");
+        elements.brochureLink.removeAttribute("href");
+      }
+    }
+
+    function renderProfile(profile) {
+      state.profile = profile;
+      hideStatus();
+
+      const meta = profile.meta || {};
+      const branding = profile.branding || {};
+      const person = profile.person || {};
+      const contact = profile.contact || {};
+      const company = profile.company || {};
+      const assets = profile.assets || {};
+
+      document.title = meta.title || document.title;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription && meta.description) {
+        metaDescription.setAttribute("content", meta.description);
+      }
+
+      if (assets.background) {
+        document.documentElement.style.setProperty("--page-bg-image", `url("${assets.background}")`);
+      }
+
+      setHeroMedia(assets.heroVideo, assets.banner, assets.heroVideoPoster || "");
+      setImage(elements.profilePhoto, person.profilePhoto, person.name || "Profile photo");
+      setImage(elements.phoneIcon, assets.phoneIcon, "Phone icon");
+      setImage(elements.emailIcon, assets.emailIcon, "Email icon");
+      setImage(elements.linkedinIcon, assets.linkedinIcon, "LinkedIn icon");
+      setImage(elements.whatsappIcon, assets.whatsappIcon, "WhatsApp icon");
+      setImage(elements.exchangeImage, assets.exchangeButton, "Exchange contact");
+      setImage(elements.saveImage, assets.saveButton, "Save to contacts");
+      setImage(elements.shareIcon, assets.shareIcon, "Share");
+      setOptionalImage(elements.trustBadgeWrap, elements.trustBadge, assets.trustBadge, "Trust badge");
+      setImage(elements.featureImage, assets.featureImage, "Featured diamond");
+      setImage(elements.serviceBlockImage, assets.serviceBlock, "Diamond services");
+      setImage(elements.brochureButton, assets.downloadBrochureButton, branding.brochureLabel || "Download brochure");
+      setImage(elements.youtubeIcon, assets.youtubeIcon, "YouTube");
+      setImage(elements.facebookIcon, assets.facebookIcon, "Facebook");
+      setImage(elements.instagramIcon, assets.instagramIcon, "Instagram");
+      setImage(elements.companyLinkedinIcon, assets.companyLinkedinIcon, "LinkedIn");
+      setImage(elements.poweredByImage, assets.poweredBy, "Powered by GoodUX");
+
+      elements.personName.textContent = person.name || "";
+      elements.personRole.textContent = branding.designation || "";
+      elements.tagline.textContent = String(branding.tagline || "").replace(/â€¢/g, "•");
+      elements.trustTop.textContent = branding.trustHeadingTop || "";
+      elements.trustBottom.textContent = branding.trustHeadingBottom || "";
+      elements.aboutTitle.textContent = branding.aboutTitle || "";
+      elements.aboutDescription.innerHTML = branding.aboutDescriptionHtml || "";
+
+      const phoneLabel = joinPhone(contact.countryCode, contact.phoneNumber);
+      const phoneDigits = normalizeDigits(phoneLabel);
+      const phoneHref = phoneDigits ? `tel:+${phoneDigits}` : "#";
+      const emailHref = contact.email ? `mailto:${contact.email}` : "#";
+      const whatsappDigits = normalizeDigits(contact.whatsappNumber || phoneLabel);
+      const whatsappHref = whatsappDigits ? `https://wa.me/${whatsappDigits}` : "";
+
+      elements.phoneText.textContent = phoneLabel;
+      elements.emailText.textContent = contact.email || "";
+      elements.phoneLink.href = phoneHref;
+      elements.emailLink.href = emailHref;
+      elements.phoneLinkSecondary.href = phoneHref;
+      elements.emailLinkSecondary.href = emailHref;
+      elements.phoneLinkSecondary.textContent = phoneLabel;
+      elements.emailLinkSecondary.textContent = contact.email || "";
+      elements.addressText.textContent = (company.addressLines || []).join("\n");
+      elements.websiteText.innerHTML = (company.websiteLabel || "").replace("kushaldiamonds", "<strong>kushaldiamonds</strong>");
+      elements.websiteLink.href = company.websiteUrl || "#";
+
+      bindOptionalLink(elements.linkedinLink, contact.linkedin || "");
+      bindOptionalLink(elements.whatsappLink, whatsappHref);
+
+      const socials = company.socialLinks || {};
+      bindOptionalLink(elements.youtubeLink, socials.youtube || "");
+      bindOptionalLink(elements.facebookLink, socials.facebook || "");
+      bindOptionalLink(elements.instagramLink, socials.instagram || "");
+      bindOptionalLink(elements.companyLinkedinLink, socials.linkedin || contact.linkedin || "");
+      bindOptionalLink(elements.poweredByLink, company.poweredByUrl || "https://goodux.in/");
+
+      configureBrochureLink(company.profilePdf);
+
+      elements.loadingState.classList.add("hidden");
+      elements.contentState.classList.remove("hidden");
+    }
+
+    async function loadProfile() {
+      try {
+        const response = await fetch("data.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Unable to load profile data");
+        }
+
+        const profile = await response.json();
+        renderProfile(profile);
+      } catch (error) {
+        elements.loadingState.classList.add("hidden");
+        showStatus("Unable to load `data.json`. Please open this page through your server so the JSON file can be read.");
+        console.error(error);
+      }
+    }
+
+    elements.saveContactAction.addEventListener("click", downloadVCard);
+    elements.shareAction.addEventListener("click", function () {
+      shareProfile("share");
+    });
+    elements.exchangeAction.addEventListener("click", function () {
+      shareProfile("exchange");
+    });
+
+    loadProfile();
+  </script>
+</body>
+</html>
