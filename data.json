@@ -48,6 +48,7 @@
     "featureImage": "Assets/Product/Product1.png",
     "serviceBlock": "Assets/Service_Block.svg",
     "downloadBrochureButton": "Assets/DownloadBrochure.svg",
+    "pdfIcon": "Assets/PDF_Icon.svg",
     "exchangeButton": "Assets/ExchangeContact.svg",
     "saveButton": "Assets/SavetoContacts.svg",
     "shareIcon": "Assets/Share_icon.svg",

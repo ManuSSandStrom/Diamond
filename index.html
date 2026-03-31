@@ -593,10 +593,122 @@
       line-height: 1.45;
     }
 
+    .mobile-sticky {
+      display: none;
+    }
+
+    .mobile-sticky__inner {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 -16px 40px rgba(9, 15, 41, 0.16);
+      border-top: 1px solid rgba(5, 16, 66, 0.08);
+      border-radius: 24px 24px 0 0;
+      padding: 10px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .mobile-sticky__handle {
+      display: block;
+      width: 86px;
+      height: 6px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      background: rgba(63, 67, 73, 0.78);
+    }
+
+    .mobile-sticky__actions {
+      display: grid;
+      grid-template-columns: 56px 56px 56px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .mobile-sticky__social,
+    .mobile-sticky__pdf {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      box-shadow: 0 10px 18px rgba(7, 22, 65, 0.1);
+    }
+
+    .mobile-sticky__social img {
+      width: 56px;
+      height: 56px;
+    }
+
+    .mobile-sticky__pdf {
+      background: linear-gradient(180deg, #ff0b74 0%, #d80060 100%);
+    }
+
+    .mobile-sticky__pdf img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .mobile-sticky__social.is-static,
+    .mobile-sticky__pdf.is-disabled {
+      opacity: 0.48;
+      box-shadow: none;
+    }
+
+    .mobile-sticky__save {
+      min-width: 0;
+      height: 56px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border-radius: 14px;
+      background: #0a3159;
+      color: #ffffff;
+      box-shadow: 0 10px 18px rgba(7, 22, 65, 0.14);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .mobile-sticky__save strong {
+      font-weight: 800;
+    }
+
+    .mobile-sticky__save-glyph {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+    }
+
+    .mobile-sticky__save-glyph::before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff2b7a;
+    }
+
+    .mobile-sticky__save-glyph::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      bottom: 1px;
+      width: 18px;
+      height: 11px;
+      border-radius: 12px 12px 8px 8px;
+      background: #ff2b7a;
+    }
+
     @media (max-width: 760px) {
       .shell {
         padding-left: 12px;
         padding-right: 12px;
+        padding-bottom: calc(132px + env(safe-area-inset-bottom, 0px));
       }
 
       .card {
@@ -670,27 +782,27 @@
       .identity {
         width: 100%;
         height: auto;
+        padding-top: 6px;
       }
 
       .contact-strip {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        width: 100%;
         height: auto;
+        align-items: center;
       }
 
       .quick-socials {
+        width: auto;
         margin-left: 0;
         padding-right: 0;
+        justify-self: end;
       }
 
       .action-row {
-        grid-template-columns: 1fr;
-      }
-
-      .graphic-action,
-      .share-action {
-        justify-content: flex-start;
+        display: none;
       }
 
       .brochure-row {
@@ -730,6 +842,102 @@
 
       .footer img {
         width: 150px;
+      }
+
+      .mobile-sticky {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 80;
+        padding: 0 12px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .section-pad {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .divider {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+
+      .name {
+        font-size: 28px;
+      }
+
+      .tagline {
+        max-width: 300px;
+      }
+
+      .contact-text {
+        font-size: 14px;
+      }
+
+      .quick-socials {
+        gap: 6px;
+      }
+
+      .quick-social,
+      .quick-social img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .mobile-sticky__inner {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .mobile-sticky__actions {
+        grid-template-columns: 48px 48px 48px minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .mobile-sticky__social,
+      .mobile-sticky__pdf {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+      }
+
+      .mobile-sticky__social img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .mobile-sticky__pdf img {
+        width: 26px;
+        height: 26px;
+      }
+
+      .mobile-sticky__save {
+        height: 48px;
+        padding: 0 14px;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .mobile-sticky__save-glyph {
+        width: 20px;
+        height: 20px;
+        flex-basis: 20px;
+      }
+
+      .mobile-sticky__save-glyph::before {
+        left: 6px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .mobile-sticky__save-glyph::after {
+        left: 2px;
+        width: 16px;
+        height: 10px;
       }
     }
   </style>
@@ -884,6 +1092,27 @@
     </main>
   </div>
 
+  <div id="mobileStickyBar" class="mobile-sticky hidden">
+    <div class="mobile-sticky__inner">
+      <span class="mobile-sticky__handle" aria-hidden="true"></span>
+      <div class="mobile-sticky__actions">
+        <a id="mobileLinkedinLink" class="mobile-sticky__social" href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <img id="mobileLinkedinIcon" src="" alt="LinkedIn">
+        </a>
+        <a id="mobileWhatsappLink" class="mobile-sticky__social" href="#" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+          <img id="mobileWhatsappIcon" src="" alt="WhatsApp">
+        </a>
+        <a id="mobileBrochureLink" class="mobile-sticky__pdf" href="#" target="_blank" rel="noreferrer" aria-label="Download brochure">
+          <img id="mobilePdfIcon" src="" alt="Download brochure">
+        </a>
+        <button id="mobileSaveContactAction" class="mobile-sticky__save" type="button" aria-label="Add to contacts">
+          <span class="mobile-sticky__save-glyph" aria-hidden="true"></span>
+          <span>Add to <strong>Contacts</strong></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const elements = {
       loadingState: document.getElementById("loadingState"),
@@ -900,6 +1129,9 @@
       emailIcon: document.getElementById("emailIcon"),
       linkedinIcon: document.getElementById("linkedinIcon"),
       whatsappIcon: document.getElementById("whatsappIcon"),
+      mobileLinkedinIcon: document.getElementById("mobileLinkedinIcon"),
+      mobileWhatsappIcon: document.getElementById("mobileWhatsappIcon"),
+      mobilePdfIcon: document.getElementById("mobilePdfIcon"),
       exchangeImage: document.getElementById("exchangeImage"),
       saveImage: document.getElementById("saveImage"),
       shareIcon: document.getElementById("shareIcon"),
@@ -924,10 +1156,14 @@
       emailLink: document.getElementById("emailLink"),
       linkedinLink: document.getElementById("linkedinLink"),
       whatsappLink: document.getElementById("whatsappLink"),
+      mobileLinkedinLink: document.getElementById("mobileLinkedinLink"),
+      mobileWhatsappLink: document.getElementById("mobileWhatsappLink"),
       exchangeAction: document.getElementById("exchangeAction"),
       saveContactAction: document.getElementById("saveContactAction"),
+      mobileSaveContactAction: document.getElementById("mobileSaveContactAction"),
       shareAction: document.getElementById("shareAction"),
       brochureLink: document.getElementById("brochureLink"),
+      mobileBrochureLink: document.getElementById("mobileBrochureLink"),
       phoneLinkSecondary: document.getElementById("phoneLinkSecondary"),
       emailLinkSecondary: document.getElementById("emailLinkSecondary"),
       websiteLink: document.getElementById("websiteLink"),
@@ -936,7 +1172,8 @@
       facebookLink: document.getElementById("facebookLink"),
       instagramLink: document.getElementById("instagramLink"),
       companyLinkedinLink: document.getElementById("companyLinkedinLink"),
-      poweredByLink: document.getElementById("poweredByLink")
+      poweredByLink: document.getElementById("poweredByLink"),
+      mobileStickyBar: document.getElementById("mobileStickyBar")
     };
 
     const state = {
@@ -1109,14 +1346,22 @@
     }
 
     async function configureBrochureLink(pdfPath) {
+      const brochureLinks = [elements.brochureLink, elements.mobileBrochureLink].filter(Boolean);
+
       if (!pdfPath) {
-        elements.brochureLink.classList.add("is-disabled");
-        elements.brochureLink.removeAttribute("href");
+        brochureLinks.forEach(function (link) {
+          link.classList.add("is-disabled");
+          link.removeAttribute("href");
+          link.removeAttribute("download");
+        });
         return;
       }
 
-      elements.brochureLink.href = pdfPath;
-      elements.brochureLink.setAttribute("download", "");
+      brochureLinks.forEach(function (link) {
+        link.href = pdfPath;
+        link.setAttribute("download", "");
+        link.classList.remove("is-disabled");
+      });
 
       if (!window.location.protocol.startsWith("http")) {
         return;
@@ -1128,8 +1373,11 @@
           throw new Error("Missing PDF");
         }
       } catch (error) {
-        elements.brochureLink.classList.add("is-disabled");
-        elements.brochureLink.removeAttribute("href");
+        brochureLinks.forEach(function (link) {
+          link.classList.add("is-disabled");
+          link.removeAttribute("href");
+          link.removeAttribute("download");
+        });
       }
     }
 
@@ -1160,6 +1408,9 @@
       setImage(elements.emailIcon, assets.emailIcon, "Email icon");
       setImage(elements.linkedinIcon, assets.linkedinIcon, "LinkedIn icon");
       setImage(elements.whatsappIcon, assets.whatsappIcon, "WhatsApp icon");
+      setImage(elements.mobileLinkedinIcon, assets.linkedinIcon, "LinkedIn");
+      setImage(elements.mobileWhatsappIcon, assets.whatsappIcon, "WhatsApp");
+      setImage(elements.mobilePdfIcon, assets.pdfIcon, "Download brochure");
       setImage(elements.exchangeImage, assets.exchangeButton, "Exchange contact");
       setImage(elements.saveImage, assets.saveButton, "Save to contacts");
       setImage(elements.shareIcon, assets.shareIcon, "Share");
@@ -1206,6 +1457,8 @@
 
       bindOptionalLink(elements.linkedinLink, contact.linkedin || "");
       bindOptionalLink(elements.whatsappLink, whatsappHref);
+      bindOptionalLink(elements.mobileLinkedinLink, contact.linkedin || "");
+      bindOptionalLink(elements.mobileWhatsappLink, whatsappHref);
 
       const socials = company.socialLinks || {};
       bindOptionalLink(elements.youtubeLink, socials.youtube || "");
@@ -1218,6 +1471,7 @@
 
       elements.loadingState.classList.add("hidden");
       elements.contentState.classList.remove("hidden");
+      elements.mobileStickyBar.classList.remove("hidden");
     }
 
     async function loadProfile() {
@@ -1237,6 +1491,7 @@
     }
 
     elements.saveContactAction.addEventListener("click", downloadVCard);
+    elements.mobileSaveContactAction.addEventListener("click", downloadVCard);
     elements.shareAction.addEventListener("click", function () {
       shareProfile("share");
     });
