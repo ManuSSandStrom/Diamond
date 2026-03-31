@@ -1138,7 +1138,6 @@
       elements.personName.textContent = person.name || "";
       elements.personRole.textContent = branding.designation || "";
       elements.tagline.innerHTML = String(branding.tagline || "")
-        .replace(/â€¢/g, "•")
         .split("\n")
         .map((line) => escapeHtml(line.trim()))
         .filter(Boolean)
