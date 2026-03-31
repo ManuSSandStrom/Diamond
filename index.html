@@ -155,26 +155,14 @@
       overflow: hidden;
     }
 
-    .hero-banner-frame::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(to bottom, #000000 0 57%, #ffffff 57% 100%);
-      pointer-events: none;
-    }
-
     .hero-banner {
       display: block;
-      width: 512px;
-      height: 218px;
-      max-width: none;
-      margin-left: -6px;
-      position: relative;
-      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transform: scale(1.008);
+      transform-origin: center top;
     }
 
     .profile-wrap {
@@ -650,14 +638,10 @@
         transform: none;
       }
 
-      .hero-banner-frame::before {
-        width: 1px;
-      }
-
       .hero-banner {
-        width: calc(100% + 12px);
+        width: 100%;
         height: 100%;
-        margin-left: -6px;
+        transform: scale(1.01);
       }
 
       .section-pad {
