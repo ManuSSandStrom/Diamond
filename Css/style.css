@@ -31,6 +31,7 @@ body {
     background: transparent linear-gradient(180deg, #FFFFFF 0%, #fcf2e7 100%) 0% 0% no-repeat padding-box;
     background: transparent linear-gradient(180deg, #FFFFFF 0%, #fcf2e7 100%) 0% 0% no-repeat padding-box;
     background-repeat: repeat-y;
+    background: #000000;
     background-attachment: fixed;
     /* background-repeat: no-repeat; */
     background-size: cover;
@@ -79,18 +80,14 @@ svg{
     top: 0;
     overflow: hidden;
     z-index: -2;
-    background: transparent radial-gradient(closest-side at 48% 9%, #D4B4FFE5 0%, #7B44C4D5 100%) 0% 0% no-repeat padding-box;
+    background: #000000;
 }
 .cardbgcolorblock::before {
     content: "";
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: var(--asset-page-bg);
-    /* opacity: 0.05;  */
-    background-repeat: repeat;
-    /* background-position: center; */
-    background-size: 100%;
+    background-image: none;
     pointer-events: none;
     top: 0;
 }
@@ -101,11 +98,7 @@ svg{
     bottom: 0;
     height: 100%;
     width: 100%;
-    background-image: var(--asset-bottom-bg);
-    /* opacity: 0.05;  */
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: 100%;
+    background-image: none;
     pointer-events: none;
 }
 /* .card-bg-img{
@@ -1463,7 +1456,7 @@ svg{
 @media screen and (max-width: 550px) {
 
     .card-section{
-        padding: 0px 15px 20px 15px;
+        padding: 0;
     }
 
     .card-parent{
@@ -1477,6 +1470,11 @@ svg{
     .card-section:not(.preview) .card {
         width: 100%;
         margin-bottom: 100px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .card-header{
+        width: 100%;
     }
 
     /* .card-section:not(.preview) .card-header{
