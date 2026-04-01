@@ -489,6 +489,9 @@ svg{
     text-align: center;
     max-width: 406px;
     margin: 0 auto;
+    min-height: 46px;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 .contact-section {
     display: flex;
