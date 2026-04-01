@@ -10,6 +10,7 @@
     --asset-linkedin-icon: url("../Assets/linkedin_icon.svg");
     --asset-facebook-icon: url("../Assets/facebook_icon.svg");
     --asset-xcom-icon: url("../Assets/xcom_icon.svg");
+    --shell-bg: #0b0700;
 }
 html{
     height: 100%;
@@ -31,7 +32,7 @@ body {
     background: transparent linear-gradient(180deg, #FFFFFF 0%, #fcf2e7 100%) 0% 0% no-repeat padding-box;
     background: transparent linear-gradient(180deg, #FFFFFF 0%, #fcf2e7 100%) 0% 0% no-repeat padding-box;
     background-repeat: repeat-y;
-    background: #000000;
+    background: var(--shell-bg);
     background-attachment: fixed;
     /* background-repeat: no-repeat; */
     background-size: cover;
@@ -80,7 +81,7 @@ svg{
     top: 0;
     overflow: hidden;
     z-index: -2;
-    background: #000000;
+    background: var(--shell-bg);
 }
 .cardbgcolorblock::before {
     content: "";
@@ -745,13 +746,14 @@ svg{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-top: 0.5px solid rgba(112, 112, 112, 0.3);
+    border-top: 0.5px solid rgba(112, 112, 112, 0.5);
     /* padding-bottom: 35px; */
 }
 
 .service-header{
-    width: 440px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 440px;
+    flex: 0 0 auto;
 }
 
 .service-header img{
@@ -761,8 +763,8 @@ svg{
 }
 
 .service-contents{
-    width: 440px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 440px;
 }
 
 .service-contents video{
@@ -1811,7 +1813,8 @@ svg{
         font-size: 20px;
     }
     .service-header {
-        width: auto;
+        width: 100%;
+        max-width: 440px;
     }
 
     /* .card-section:not(.preview) .profile-imagemaincontainer {
