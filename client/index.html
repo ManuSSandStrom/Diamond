@@ -12,9 +12,9 @@
   <meta property="og:title" content="Jaykumar Shah | Gemologist at Kushal Diamonds">
   <meta property="og:description" content="Jaykumar Shah, Gemologist (D.G), digital profile for Kushal Diamonds with direct contact and company details.">
   <meta id="ogUrlMeta" property="og:url" content="https://jayakumarshah.netlify.app/">
-  <meta id="ogImageMeta" property="og:image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
-  <meta property="og:image:url" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
-  <meta property="og:image:secure_url" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
+  <meta id="ogImageMeta" property="og:image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
+  <meta property="og:image:url" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
+  <meta property="og:image:secure_url" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,14 +23,15 @@
   <meta id="twitterTitleMeta" name="twitter:title" content="Jaykumar Shah | Gemologist at Kushal Diamonds">
   <meta id="twitterDescriptionMeta" name="twitter:description" content="Jaykumar Shah, Gemologist (D.G), digital profile for Kushal Diamonds with direct contact and company details.">
   <meta name="twitter:url" content="https://jayakumarshah.netlify.app/">
-  <meta id="twitterImageMeta" name="twitter:image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
+  <meta id="twitterImageMeta" name="twitter:image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
+  <meta name="twitter:image:src" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
   <meta id="twitterImageAltMeta" name="twitter:image:alt" content="Jaykumar Shah profile preview">
   <meta itemprop="name" content="Jaykumar Shah | Gemologist at Kushal Diamonds">
   <meta itemprop="description" content="Jaykumar Shah, Gemologist (D.G), digital profile for Kushal Diamonds with direct contact and company details.">
-  <meta itemprop="image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
+  <meta itemprop="image" content="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
   <title>Jaykumar Shah | Gemologist at Kushal Diamonds</title>
   <link id="canonicalLink" rel="canonical" href="https://jayakumarshah.netlify.app/">
-  <link rel="image_src" href="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
+  <link rel="image_src" href="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png?v=20260402">
   <link id="faviconSvgLink" rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
   <link id="shortcutIconLink" rel="shortcut icon" type="image/png" href="./assets/Profile/ProfileThumbnail.png">
   <link id="faviconPngLink" rel="icon" type="image/png" href="./assets/Profile/ProfileThumbnail.png">
@@ -1517,7 +1518,8 @@
       "meta": {
         "title": "Jaykumar Shah | Gemologist at Kushal Diamonds",
         "description": "Jaykumar Shah, Gemologist (D.G), digital profile for Kushal Diamonds with direct contact and company details.",
-        "siteUrl": "https://jayakumarshah.netlify.app/"
+        "siteUrl": "https://jayakumarshah.netlify.app/",
+        "shareVersion": "20260402"
       },
       "branding": {
         "companyName": "Kushal Diamonds",
@@ -1884,6 +1886,13 @@
       }
     }
 
+    function withAssetVersion(value, version) {
+      if (!value || !version) return value || "";
+
+      const separator = value.includes("?") ? "&" : "?";
+      return `${value}${separator}v=${encodeURIComponent(version)}`;
+    }
+
     function buildStructuredData(profile, canonicalUrl, imageUrl, thumbnailUrl) {
       const person = profile.person || {};
       const branding = profile.branding || {};
@@ -2084,9 +2093,15 @@
       const contact = profile.contact || {};
       const company = profile.company || {};
       const assets = profile.assets || {};
-      const shareImage = assets.sharePreview || assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "";
+      const shareVersion = meta.shareVersion || "";
+      const shareImage = withAssetVersion(
+        assets.sharePreview || assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "",
+        shareVersion
+      );
       const resolvedShareImage = resolveUrl(shareImage);
-      const resolvedThumbnail = resolveUrl(assets.thumbnail || person.profilePhoto || shareImage);
+      const resolvedThumbnail = resolveUrl(
+        withAssetVersion(assets.thumbnail || person.profilePhoto || shareImage, shareVersion)
+      );
       const canonicalUrl = meta.siteUrl
         ? resolveUrl(meta.siteUrl)
         : window.location.protocol.startsWith("http")
@@ -2113,6 +2128,7 @@
       setMetaContent('meta[property="og:image"]', resolvedShareImage);
       setMetaContent('meta[property="og:image:alt"]', imageAlt);
       setMetaContent('meta[name="twitter:image"]', resolvedShareImage);
+      setMetaContent('meta[name="twitter:image:src"]', resolvedShareImage);
       setMetaContent('meta[name="twitter:image:alt"]', imageAlt);
       setMetaContent('meta[itemprop="image"]', resolvedThumbnail || resolvedShareImage);
       setLinkHref('#canonicalLink', canonicalUrl);
