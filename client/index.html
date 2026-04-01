@@ -877,27 +877,30 @@
       width: min(calc(100% - 24px), 500px);
       max-width: 500px;
       margin: 0 auto;
-      background: #ffffff;
-      box-shadow: 0 -18px 46px rgba(9, 15, 41, 0.14);
-      border-radius: 42px 42px 0 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, #ffffff 100%);
+      box-shadow: 0 -16px 34px rgba(9, 15, 41, 0.12);
+      border: 1px solid rgba(5, 16, 66, 0.08);
+      border-bottom: 0;
+      border-radius: 30px 30px 0 0;
+      backdrop-filter: blur(18px);
       overflow: hidden;
       box-sizing: border-box;
-      padding: 16px 14px calc(28px + env(safe-area-inset-bottom, 0px));
+      padding: 12px 12px calc(18px + env(safe-area-inset-bottom, 0px));
     }
 
     .mobile-sticky__actions {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 56px;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
     }
 
     .mobile-sticky__handle {
-      width: 96px;
-      height: 6px;
-      margin: 22px auto 0;
+      width: 72px;
+      height: 4px;
+      margin: 14px auto 0;
       border-radius: 999px;
-      background: rgba(88, 88, 88, 0.82);
+      background: rgba(5, 16, 66, 0.22);
     }
 
     .mobile-sticky__button {
@@ -935,7 +938,7 @@
       .shell {
         padding-left: 12px;
         padding-right: 12px;
-        padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: calc(94px + env(safe-area-inset-bottom, 0px));
       }
 
       .card {
@@ -1020,8 +1023,14 @@
       }
 
       .divider {
+        margin-top: 14px;
+        margin-bottom: 14px;
         margin-left: 20px;
         margin-right: 20px;
+      }
+
+      .contact-strip + .divider {
+        display: none;
       }
 
       .profile-wrap {
@@ -1065,7 +1074,7 @@
         grid-template-areas:
           "phone socials"
           "email email";
-        gap: 12px;
+        gap: 10px;
         width: 100%;
         max-width: 440px;
         height: auto;
@@ -1090,7 +1099,7 @@
       .brochure-row {
         width: min(100%, 430px);
         min-height: 0;
-        padding-top: 14px;
+        padding-top: 12px;
       }
 
       .brochure-link {
@@ -1108,8 +1117,9 @@
       }
 
       .about-copy {
-        font-size: 13px;
-        line-height: 18px;
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 20px;
       }
 
       .feature-image-frame,
@@ -1117,6 +1127,11 @@
       .service-block img {
         width: 100%;
         height: auto;
+      }
+
+      .trust-copy {
+        padding-top: 4px;
+        padding-bottom: 2px;
       }
 
       .feature-image-frame {
@@ -1134,15 +1149,29 @@
         width: 100%;
       }
 
+      .feature-image {
+        padding-top: 8px;
+        padding-bottom: 12px;
+      }
+
+      .service-block {
+        padding-top: 2px;
+      }
+
       .info-card,
       .website-row {
         width: 100%;
       }
 
+      .address-block {
+        padding-top: 14px;
+        gap: 12px;
+      }
+
       .address-text {
         width: auto;
-        font-size: 12px;
-        line-height: 17px;
+        font-size: 13px;
+        line-height: 19px;
       }
 
       .contact-secondary,
@@ -1150,15 +1179,45 @@
         width: 100%;
       }
 
+      .contact-secondary {
+        gap: 4px;
+      }
+
       .contact-inline {
-        font-size: 13px;
-        line-height: 18px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .website-row {
+        display: flex;
+        align-items: center;
+        height: auto;
+        min-height: 0;
+        padding-top: 2px;
+        padding-bottom: 2px;
       }
 
       .website-pill {
         min-height: 0;
         font-size: 14px;
-        line-height: 18px;
+        line-height: 20px;
+      }
+
+      .company-socials {
+        height: auto;
+        padding-top: 8px;
+        padding-bottom: 4px;
+      }
+
+      .footer {
+        height: auto;
+        min-height: 0;
+        padding-top: 10px;
+        padding-bottom: 18px;
+      }
+
+      .footer a {
+        height: auto;
       }
 
       .footer img {
@@ -1183,6 +1242,8 @@
       }
 
       .divider {
+        margin-top: 12px;
+        margin-bottom: 12px;
         margin-left: 16px;
         margin-right: 16px;
       }
@@ -1215,7 +1276,7 @@
 
       .mobile-sticky__inner {
         width: min(calc(100% - 20px), 500px);
-        border-radius: 34px 34px 0 0;
+        border-radius: 26px 26px 0 0;
         padding-left: 12px;
         padding-right: 12px;
       }
