@@ -4,21 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <meta name="theme-color" content="#051042">
   <meta property="og:type" content="website">
+  <meta id="ogSiteNameMeta" property="og:site_name" content="Kushal Diamonds">
   <meta property="og:title" content="Jaykumar Shah | Kushal Diamonds">
   <meta property="og:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <meta id="ogUrlMeta" property="og:url" content="">
   <meta id="ogImageMeta" property="og:image" content="Assets/Profile/ProfileThumbnail.png">
+  <meta property="og:image:width" content="160">
+  <meta property="og:image:height" content="160">
+  <meta id="ogImageAltMeta" property="og:image:alt" content="Jaykumar Shah profile preview">
   <meta id="twitterCardMeta" name="twitter:card" content="summary_large_image">
   <meta id="twitterTitleMeta" name="twitter:title" content="Jaykumar Shah | Kushal Diamonds">
   <meta id="twitterDescriptionMeta" name="twitter:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
   <meta id="twitterImageMeta" name="twitter:image" content="Assets/Profile/ProfileThumbnail.png">
+  <meta id="twitterImageAltMeta" name="twitter:image:alt" content="Jaykumar Shah profile preview">
   <title>Jaykumar Shah | Kushal Diamonds</title>
+  <link id="canonicalLink" rel="canonical" href="">
   <link id="faviconSvgLink" rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
   <link id="faviconPngLink" rel="icon" type="image/png" href="Assets/Profile/ProfileThumbnail.png">
   <link id="appleTouchIconLink" rel="apple-touch-icon" href="Assets/Profile/ProfileThumbnail.png">
+  <link rel="preload" as="image" href="Assets/Profile/ProfileThumbnail.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script id="structuredData" type="application/ld+json"></script>
   <style>
     :root {
       --page-bg: #0b0700;
@@ -671,9 +681,9 @@
     .address-block {
       width: 440px;
       max-width: 100%;
-      padding-top: 16px;
+      padding-top: 18px;
       display: grid;
-      gap: 18px;
+      gap: 20px;
       margin: 0 auto;
     }
 
@@ -743,20 +753,20 @@
 
     .website-row {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       width: 440px;
       height: 70px;
       max-width: 100%;
-      padding-top: 0;
+      padding-top: 11px;
       padding-bottom: 0;
+      box-sizing: border-box;
       margin: 0 auto;
     }
 
     .website-pill {
-      display: flex;
-      align-items: center;
+      display: block;
       width: 440px;
-      height: 70px;
+      min-height: 38px;
       padding: 0;
       border-radius: 0;
       border: 0;
@@ -764,7 +774,7 @@
       color: var(--navy);
       font-size: 20px;
       font-weight: 400;
-      line-height: 22px;
+      line-height: 38px;
       box-shadow: none;
     }
 
@@ -778,10 +788,10 @@
 
     .company-socials {
       display: flex;
-      gap: 14px;
+      gap: 8px;
       align-items: center;
       width: 440px;
-      height: 72px;
+      height: 66px;
       max-width: 100%;
       box-sizing: border-box;
       margin: 0 auto;
@@ -791,30 +801,31 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: auto;
+      height: 28px;
     }
 
     .company-social img {
-      width: 40px;
-      height: 40px;
+      width: auto;
+      height: 28px;
+      object-fit: contain;
     }
 
     .footer {
       display: flex;
-      align-items: center;
-      padding-top: 2px;
-      padding-bottom: 16px;
+      align-items: flex-end;
+      padding-top: 0;
+      padding-bottom: 22px;
       width: 440px;
-      height: 28px;
+      height: 90px;
       max-width: 100%;
       box-sizing: border-box;
       margin: 0 auto;
     }
 
     .footer img {
-      width: 114px;
-      height: auto;
+      width: 166.281px;
+      height: 25.913px;
     }
 
     .status {
@@ -1418,7 +1429,8 @@
       instagramLink: document.getElementById("instagramLink"),
       companyLinkedinLink: document.getElementById("companyLinkedinLink"),
       poweredByLink: document.getElementById("poweredByLink"),
-      mobileStickyBar: document.getElementById("mobileStickyBar")
+      mobileStickyBar: document.getElementById("mobileStickyBar"),
+      structuredData: document.getElementById("structuredData")
     };
 
     const state = {
@@ -1664,6 +1676,70 @@
       }
     }
 
+    function resolveUrl(value) {
+      if (!value) return "";
+
+      try {
+        return new URL(value, window.location.href).href;
+      } catch (error) {
+        return value;
+      }
+    }
+
+    function buildStructuredData(profile, canonicalUrl, imageUrl) {
+      const person = profile.person || {};
+      const branding = profile.branding || {};
+      const contact = profile.contact || {};
+      const company = profile.company || {};
+      const socials = company.socialLinks || {};
+      const sameAs = [socials.youtube, socials.facebook, socials.instagram, socials.linkedin, contact.linkedin]
+        .filter(Boolean);
+
+      return {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            name: branding.companyName || "",
+            url: canonicalUrl || company.websiteUrl || "",
+            logo: imageUrl || "",
+            sameAs: sameAs
+          },
+          {
+            "@type": "Person",
+            name: person.name || "",
+            image: imageUrl || "",
+            jobTitle: branding.designation || "",
+            email: contact.email ? `mailto:${contact.email}` : "",
+            telephone: joinPhone(contact.countryCode, contact.phoneNumber) || "",
+            url: canonicalUrl || "",
+            affiliation: {
+              "@type": "Organization",
+              name: branding.companyName || ""
+            },
+            sameAs: [contact.linkedin].filter(Boolean),
+            address: company.addressLines && company.addressLines.length
+              ? {
+                  "@type": "PostalAddress",
+                  streetAddress: company.addressLines[0] || "",
+                  addressLocality: company.addressLines[1] || "",
+                  addressCountry: company.addressLines[2] || ""
+                }
+              : undefined
+          }
+        ]
+      };
+    }
+
+    function renderStructuredData(profile, canonicalUrl, imageUrl) {
+      if (!elements.structuredData) return;
+      elements.structuredData.textContent = JSON.stringify(
+        buildStructuredData(profile, canonicalUrl, imageUrl),
+        null,
+        2
+      );
+    }
+
     function bindOptionalLink(element, url) {
       if (!element) return;
 
@@ -1810,21 +1886,34 @@
       const contact = profile.contact || {};
       const company = profile.company || {};
       const assets = profile.assets || {};
+      const shareImage = assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "";
+      const resolvedShareImage = resolveUrl(shareImage);
+      const canonicalUrl = window.location.protocol.startsWith("http")
+        ? window.location.href
+        : resolveUrl(company.websiteUrl || "");
+      const imageAlt = person.name
+        ? `${person.name} profile preview`
+        : `${branding.companyName || "Kushal Diamonds"} profile preview`;
 
       document.title = meta.title || document.title;
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription && meta.description) {
         metaDescription.setAttribute("content", meta.description);
       }
+      setMetaContent('meta[property="og:site_name"]', branding.companyName || "Kushal Diamonds");
       setMetaContent('meta[property="og:title"]', meta.title || document.title);
       setMetaContent('meta[property="og:description"]', meta.description || "");
+      setMetaContent('meta[property="og:url"]', canonicalUrl);
       setMetaContent('meta[name="twitter:title"]', meta.title || document.title);
       setMetaContent('meta[name="twitter:description"]', meta.description || "");
-      setMetaContent('meta[property="og:image"]', assets.thumbnail || person.profilePhoto || "");
-      setMetaContent('meta[name="twitter:image"]', assets.thumbnail || person.profilePhoto || "");
+      setMetaContent('meta[property="og:image"]', resolvedShareImage);
+      setMetaContent('meta[property="og:image:alt"]', imageAlt);
+      setMetaContent('meta[name="twitter:image"]', resolvedShareImage);
+      setMetaContent('meta[name="twitter:image:alt"]', imageAlt);
+      setLinkHref('#canonicalLink', canonicalUrl);
       setLinkHref('#faviconSvgLink', assets.favicon || "Assets/favicon.svg");
-      setLinkHref('#faviconPngLink', assets.thumbnail || person.profilePhoto || "");
-      setLinkHref('#appleTouchIconLink', assets.thumbnail || person.profilePhoto || "");
+      setLinkHref('#faviconPngLink', shareImage || person.profilePhoto || "");
+      setLinkHref('#appleTouchIconLink', shareImage || person.profilePhoto || "");
 
       if (assets.background) {
         document.documentElement.style.setProperty("--page-bg-image", `url("${assets.background}")`);
@@ -1832,7 +1921,7 @@
 
       setHeroMedia(assets.heroVideo, assets.banner, assets.heroVideoPoster || assets.thumbnail || person.profilePhoto || "");
       renderHeroBrand(branding, assets);
-      setImage(elements.profilePhoto, person.profilePhoto, person.name || "Profile photo");
+      setImage(elements.profilePhoto, person.profilePhoto || assets.thumbnail, person.name || "Profile photo");
       setImage(elements.phoneIcon, assets.phoneIcon, "Phone icon");
       setImage(elements.emailIcon, assets.emailIcon, "Email icon");
       setImage(elements.linkedinIcon, assets.linkedinIcon, "LinkedIn icon");
@@ -1897,6 +1986,7 @@
       bindOptionalLink(elements.poweredByLink, company.poweredByUrl || "https://goodux.in/");
 
       configureBrochureLink(company.profilePdf);
+      renderStructuredData(profile, canonicalUrl, resolvedShareImage);
 
       elements.loadingState.classList.add("hidden");
       elements.contentState.classList.remove("hidden");
