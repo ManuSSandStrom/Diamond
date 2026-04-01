@@ -133,8 +133,8 @@
 
     .loading {
       padding: 48px 40px;
-      color: #ffffff;
-      background: #111111;
+      color: var(--navy);
+      background: #ffffff;
       text-align: center;
       font-size: 0.95rem;
       font-weight: 700;
@@ -1872,6 +1872,53 @@
       }
     }
 
+    function waitForImageLoad(element) {
+      return new Promise(function (resolve) {
+        if (!element || !element.getAttribute("src")) {
+          resolve();
+          return;
+        }
+
+        if (element.complete && element.naturalWidth > 0) {
+          resolve();
+          return;
+        }
+
+        const finalize = function () {
+          element.removeEventListener("load", finalize);
+          element.removeEventListener("error", finalize);
+          resolve();
+        };
+
+        element.addEventListener("load", finalize, { once: true });
+        element.addEventListener("error", finalize, { once: true });
+      });
+    }
+
+    function waitForVideoReady(element) {
+      return new Promise(function (resolve) {
+        if (!element || element.classList.contains("hidden") || !element.currentSrc && !element.querySelector("source[src]")) {
+          resolve();
+          return;
+        }
+
+        if (element.readyState >= 2) {
+          resolve();
+          return;
+        }
+
+        const finalize = function () {
+          element.removeEventListener("loadeddata", finalize);
+          element.removeEventListener("error", finalize);
+          resolve();
+        };
+
+        window.setTimeout(finalize, 1800);
+        element.addEventListener("loadeddata", finalize, { once: true });
+        element.addEventListener("error", finalize, { once: true });
+      });
+    }
+
     function withAssetVersion(value, version) {
       if (!value || !version) return value || "";
 
@@ -2069,7 +2116,7 @@
       }
     }
 
-    function renderProfile(profile) {
+    async function renderProfile(profile) {
       state.profile = profile;
       hideStatus();
 
@@ -2199,6 +2246,12 @@
       configureBrochureLink(company.profilePdf);
       renderStructuredData(profile, canonicalUrl, resolvedShareImage, resolvedThumbnail);
 
+      await Promise.allSettled([
+        waitForImageLoad(elements.bannerImage),
+        waitForImageLoad(elements.profilePhoto),
+        waitForVideoReady(elements.heroVideo)
+      ]);
+
       elements.loadingState.classList.add("hidden");
       elements.contentState.classList.remove("hidden");
       elements.mobileStickyBar.classList.remove("hidden");
@@ -2213,10 +2266,10 @@
       return JSON.parse(node.textContent);
     }
 
-    function loadProfile() {
+    async function loadProfile() {
       try {
         const profile = readEmbeddedProfile();
-        renderProfile(profile);
+        await renderProfile(profile);
       } catch (error) {
         elements.loadingState.classList.add("hidden");
         showStatus("Unable to load the embedded profile data.");
