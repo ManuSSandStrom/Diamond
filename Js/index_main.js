@@ -345,7 +345,8 @@ function imgGenerator() {
 
 
 // Safer event bindings
-document.getElementById("vcarddownloadBtn")?.addEventListener("click", () => {
+document.getElementById("vcarddownloadBtn")?.addEventListener("click", (e) => {
+    e.preventDefault();
     const vcfPath = resolveAssetPath(vcardFile);
     const a = document. createElement("a");
     a.href = vcfPath;
@@ -353,7 +354,8 @@ document.getElementById("vcarddownloadBtn")?.addEventListener("click", () => {
     a.click();
 });
 
-document.getElementById("vcarddownloadBtnMobile")?.addEventListener("click", () => {
+document.getElementById("vcarddownloadBtnMobile")?.addEventListener("click", (e) => {
+    e.preventDefault();
     const vcfPath = resolveAssetPath(vcardFile);
     const a = document.createElement("a");
     a.href = vcfPath;
@@ -361,7 +363,7 @@ document.getElementById("vcarddownloadBtnMobile")?.addEventListener("click", () 
     a.click();
 });
 
-document.getElementById("copyLink").addEventListener("click", async function(e) {
+document.getElementById("copyLink")?.addEventListener("click", async function(e) {
     e.preventDefault();
     const currentUrl = window.location.href;
 
@@ -389,31 +391,47 @@ document.getElementById("copyLink").addEventListener("click", async function(e) 
 const cardPreview = document.getElementById("CardPreview");
 const formContainer = document.getElementById("container");
 
-document.getElementById("qrpreviewbtn").addEventListener("click", function () {
-    cardPreview.style.top  = '0';
-    cardPreview.style.transition = 'top 0.5s ease';
+function bindClick(id, handler) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("click", function (e) {
+        e.preventDefault();
+        handler(e);
+    });
+}
+
+bindClick("qrpreviewbtn", function () {
+    if (!cardPreview) return;
+    cardPreview.style.top = "0";
+    cardPreview.style.transition = "top 0.5s ease";
 });
 
-document.getElementById("qrpreviewbtnmobile").addEventListener("click", function () {
-    cardPreview.style.top  = '0';
-    cardPreview.style.transition = 'top 0.5s ease';
+bindClick("qrpreviewbtnmobile", function () {
+    if (!cardPreview) return;
+    cardPreview.style.top = "0";
+    cardPreview.style.transition = "top 0.5s ease";
 });
 
-document.getElementById("Closebtn").addEventListener("click", function () {
-    cardPreview.style.top  = '-9999px';
+bindClick("Closebtn", function () {
+    if (!cardPreview) return;
+    cardPreview.style.top = "-9999px";
 });
 
-cardPreview.addEventListener("click",function(e){
-    if (e.target === this) { 
-        document.getElementById("Closebtn").click();
-    }
-});
+if (cardPreview) {
+    cardPreview.addEventListener("click", function (e) {
+        if (e.target === this) {
+            document.getElementById("Closebtn")?.click();
+        }
+    });
+}
 
-formContainer.addEventListener("click",function(e){
-    if (e.target === this) { 
-        document.getElementById("formclosebtn").click();
-    }
-});
+if (formContainer) {
+    formContainer.addEventListener("click", function (e) {
+        if (e.target === this) {
+            document.getElementById("formclosebtn")?.click();
+        }
+    });
+}
 
 
 // ---------------- FORM FIELDS ----------------
@@ -541,21 +559,23 @@ Object.values(fields).forEach(field => {
 });
 
 // OPEN FORM
-document.getElementById("openbtn").addEventListener("click", function () {
+bindClick("openbtn", function () {
     const formcardPreview = document.getElementById("container");
-    formcardPreview.style.top = '0';
-    formcardPreview.style.transition = 'top 0.5s ease';
+    if (!formcardPreview) return;
+    formcardPreview.style.top = "0";
+    formcardPreview.style.transition = "top 0.5s ease";
 });
 
 // CLOSE FORM
-document.getElementById("formclosebtn").addEventListener("click", function (e) {
-    e.preventDefault(); // prevent form submit
+bindClick("formclosebtn", function () {
     const formcardPreview = document.getElementById("container");
-    formcardPreview.style.top = '-9999px';
+    if (!formcardPreview) return;
+    formcardPreview.style.top = "-9999px";
 });
 
-document.getElementById("openbtnmobile").addEventListener("click", function () {
+bindClick("openbtnmobile", function () {
     const formcardPreview = document.getElementById("container");
-    formcardPreview.style.top = '0';
-    formcardPreview.style.transition = 'top 0.5s ease';
+    if (!formcardPreview) return;
+    formcardPreview.style.top = "0";
+    formcardPreview.style.transition = "top 0.5s ease";
 });

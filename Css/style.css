@@ -712,6 +712,12 @@ svg{
     gap: 10px;
 }
 
+.social-media-section .download-leftSection,
+.AddtoContactsmobile .download-leftSection {
+    justify-content: flex-start;
+    gap: 8px;
+}
+
 .download-leftSection a{
     display: flex;
     justify-content: center;
@@ -726,6 +732,38 @@ svg{
 
 .download-leftSection a:last-child{
     margin-right: 0;
+}
+
+#openbtn,
+#openbtnmobile {
+    width: 189.2px;
+    height: 44px;
+    flex: 0 0 189.2px;
+}
+
+#vcarddownloadBtn,
+#vcarddownloadBtnMobile {
+    width: 179.07px;
+    height: 44px;
+    flex: 0 0 179.07px;
+}
+
+#qrpreviewbtn,
+#qrpreviewbtnmobile {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+}
+
+#openbtn img,
+#openbtnmobile img,
+#vcarddownloadBtn img,
+#vcarddownloadBtnMobile img,
+#qrpreviewbtn img,
+#qrpreviewbtnmobile img {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .download-leftSection button{
@@ -1739,7 +1777,7 @@ svg{
     .download-leftSection a{
         display: flex;
         width: auto;
-        height: 40px;
+        height: 44px;
     }
 
     .social-media-links-right a{
