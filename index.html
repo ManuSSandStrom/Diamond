@@ -381,10 +381,10 @@
     .action-row {
       display: flex;
       width: 440px;
-      min-height: 60px;
+      min-height: 62px;
       max-width: 100%;
-      gap: 14px;
-      justify-content: center;
+      gap: 0;
+      justify-content: space-between;
       align-items: center;
       margin: 0 auto;
     }
@@ -523,6 +523,7 @@
     }
 
     .feature-nav {
+      display: none;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -561,6 +562,7 @@
     }
 
     .feature-dots {
+      display: none;
       position: absolute;
       left: 50%;
       bottom: 16px;
@@ -605,28 +607,27 @@
     }
 
     .about-title {
-      width: 320px;
-      height: 37px;
+      width: 219px;
+      min-height: 37px;
       max-width: 100%;
-      white-space: nowrap;
       text-align: left;
       font-family: "Roboto", sans-serif;
       font-size: 28px;
       font-weight: 700;
-      line-height: 22px;
+      line-height: 37px;
       letter-spacing: 0;
       color: var(--navy);
       opacity: 1;
     }
 
     .about-copy {
-      margin-top: 12px;
+      margin-top: 13px;
       width: 385px;
       min-height: 50px;
       max-width: 100%;
       text-align: left;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 20px;
+      line-height: 24px;
       letter-spacing: 0;
       color: var(--navy);
       font-weight: 400;
@@ -638,19 +639,20 @@
     }
 
     .brochure-row {
-      width: 430px;
-      height: 110px;
+      width: 424px;
+      height: 55px;
       max-width: 100%;
-      display: block;
-      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      padding-top: 17px;
     }
 
     .brochure-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 430px;
-      height: 110px;
+      width: 424px;
+      height: 55px;
       max-width: 100%;
       flex: 0 0 auto;
     }
@@ -658,6 +660,7 @@
     .brochure-link img {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
 
     .brochure-line {
@@ -670,33 +673,27 @@
     }
 
     .address-block {
-      padding-top: 22px;
+      width: 440px;
+      max-width: 100%;
+      padding-top: 16px;
       display: grid;
       gap: 18px;
+      margin: 0 auto;
     }
 
     .info-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      width: 440px;
+      display: block;
+      width: 100%;
       max-width: 100%;
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(255, 251, 244, 0.96) 0%, #ffffff 100%);
-      box-shadow: 0 14px 28px rgba(5, 16, 66, 0.06);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .info-icon {
-      width: 44px;
-      height: 44px;
-      flex: 0 0 44px;
-      border-radius: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(5, 16, 66, 0.1), rgba(207, 145, 21, 0.18));
+      display: none;
     }
 
     .info-icon img {
@@ -705,72 +702,78 @@
     }
 
     .contact-secondary {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
       display: grid;
-      gap: 10px;
-      align-content: start;
-      opacity: 1;
+      gap: 6px;
+      width: 100%;
+      max-width: 100%;
     }
 
     .address-text {
       white-space: pre-line;
-      width: auto;
+      width: 424px;
       max-width: 100%;
       text-align: left;
       font-family: "Roboto", sans-serif;
-      font-size: 18px;
-      line-height: 26px;
+      font-size: 20px;
+      line-height: 24px;
       letter-spacing: 0;
       color: var(--navy);
-      font-weight: 500;
+      font-weight: 400;
       opacity: 1;
     }
 
     .contact-inline {
-      display: inline-flex;
-      align-items: center;
-      width: 100%;
+      display: block;
+      width: 424px;
       max-width: 100%;
-      min-height: 46px;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: #f7f8fb;
+      min-height: 0;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
       font-family: "Roboto", sans-serif;
-      font-size: 16px;
+      font-size: 20px;
       line-height: 22px;
-      font-weight: 700;
       color: var(--navy);
       opacity: 1;
     }
 
+    #phoneLinkSecondary {
+      font-weight: 400;
+    }
+
+    #emailLinkSecondary {
+      font-weight: 700;
+    }
+
     .website-row {
+      display: flex;
+      align-items: center;
       width: 440px;
+      height: 70px;
       max-width: 100%;
-      padding-top: 4px;
-      padding-bottom: 2px;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0 auto;
     }
 
     .website-pill {
       display: flex;
       align-items: center;
-      gap: 14px;
-      width: 100%;
-      min-height: 68px;
-      padding: 14px 18px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: linear-gradient(135deg, rgba(5, 16, 66, 0.04), rgba(207, 145, 21, 0.12));
+      width: 440px;
+      height: 70px;
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      background: transparent;
       color: var(--navy);
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.2;
-      box-shadow: 0 14px 28px rgba(5, 16, 66, 0.06);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 22px;
+      box-shadow: none;
     }
 
     .website-pill .info-icon {
-      flex-shrink: 0;
+      display: none;
     }
 
     .website-row strong {
@@ -779,40 +782,42 @@
 
     .company-socials {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       align-items: center;
       width: 440px;
-      height: 70px;
+      height: 72px;
       max-width: 100%;
       box-sizing: border-box;
+      margin: 0 auto;
     }
 
     .company-social {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
 
     .company-social img {
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
 
     .footer {
       display: flex;
       align-items: center;
-      padding-top: 4px;
-      padding-bottom: 18px;
+      padding-top: 2px;
+      padding-bottom: 16px;
       width: 440px;
-      height: 90px;
+      height: 28px;
       max-width: 100%;
       box-sizing: border-box;
+      margin: 0 auto;
     }
 
     .footer img {
-      width: 166px;
+      width: 114px;
       height: auto;
     }
 
@@ -1046,6 +1051,16 @@
         aspect-ratio: 430 / 110;
       }
 
+      .about-title {
+        font-size: 22px;
+        line-height: 24px;
+      }
+
+      .about-copy {
+        font-size: 13px;
+        line-height: 18px;
+      }
+
       .feature-image-frame,
       .service-block-frame,
       .service-block img {
@@ -1075,8 +1090,8 @@
 
       .address-text {
         width: auto;
-        font-size: 17px;
-        line-height: 24px;
+        font-size: 12px;
+        line-height: 17px;
       }
 
       .contact-secondary,
@@ -1085,17 +1100,18 @@
       }
 
       .contact-inline {
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 13px;
+        line-height: 18px;
       }
 
       .website-pill {
-        min-height: 62px;
-        font-size: 17px;
+        min-height: 0;
+        font-size: 14px;
+        line-height: 18px;
       }
 
       .footer img {
-        width: 150px;
+        width: 104px;
       }
 
       .mobile-sticky {
@@ -1453,8 +1469,16 @@
       };
     }
 
-    function renderHeroBrand(branding) {
+    function renderHeroBrand(branding, assets) {
       if (!elements.heroBrandWrap || !elements.heroBrandPrimary || !elements.heroBrandSecondary || !elements.heroBrandSince) {
+        return;
+      }
+
+      if (assets && assets.banner) {
+        elements.heroBrandWrap.classList.add("hidden");
+        elements.heroBrandPrimary.textContent = "";
+        elements.heroBrandSecondary.textContent = "";
+        elements.heroBrandSince.textContent = "";
         return;
       }
 
@@ -1817,7 +1841,7 @@
       }
 
       setHeroMedia(assets.heroVideo, assets.banner, assets.heroVideoPoster || assets.thumbnail || person.profilePhoto || "");
-      renderHeroBrand(branding);
+      renderHeroBrand(branding, assets);
       setImage(elements.profilePhoto, person.profilePhoto, person.name || "Profile photo");
       setImage(elements.phoneIcon, assets.phoneIcon, "Phone icon");
       setImage(elements.emailIcon, assets.emailIcon, "Email icon");
