@@ -161,7 +161,10 @@ async function main() {
   setText("rolePreview", p.role);
   setText("profile-summary", p.profileSummary || "");
   document.getElementById("profile-image").src = resolveAssetPath(p.profilePhoto || "Profile/Jaykumar.png");
-  document.getElementById("profile-image-preview").src = resolveAssetPath(p.profileThumbnail || p.profilePhoto || "Profile/ProfileThumbnail.png");
+  const previewProfileImage = document.getElementById("profile-image-preview");
+  if (previewProfileImage) {
+    previewProfileImage.src = resolveAssetPath(p.profileThumbnail || p.profilePhoto || "Profile/ProfileThumbnail.png");
+  }
   setText("company-name", p.companyName || "");
   setHtml("company-description", p.companyDescriptionHtml || "");
   setText("company-address", p.companyAddress || "");
@@ -189,6 +192,8 @@ async function main() {
     document.getElementById("websiteLink").href = p.website;
   }
   setHtml("website", p.websiteLabel || "");
+  bindVisibleLink("poweredByLinkMain", p.website);
+  bindVisibleLink("poweredByLinkPreview", p.website);
 
   // ===== PDF Profile =====
   await configurePdfLink(p.pdfProfile);
