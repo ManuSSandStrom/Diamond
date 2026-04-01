@@ -644,6 +644,7 @@
       max-width: 100%;
       display: flex;
       align-items: center;
+      gap: 18px;
       padding-top: 17px;
     }
 
@@ -664,7 +665,10 @@
     }
 
     .brochure-line {
-      display: none;
+      display: block;
+      flex: 1 1 auto;
+      height: 1px;
+      background: rgba(5, 16, 66, 0.14);
     }
 
     .brochure-link.is-disabled {
@@ -1043,12 +1047,13 @@
       .brochure-row {
         width: 100%;
         height: auto;
+        gap: 14px;
       }
 
       .brochure-link {
-        width: 100%;
+        width: min(100%, 424px);
         height: auto;
-        aspect-ratio: 430 / 110;
+        aspect-ratio: 424 / 55;
       }
 
       .about-title {
@@ -1292,9 +1297,6 @@
 
         <section class="address-block section-pad">
           <div class="info-card">
-            <span class="info-icon" aria-hidden="true">
-              <img id="addressIcon" src="" alt="Location">
-            </span>
             <p id="addressText" class="address-text"></p>
           </div>
           <div class="contact-secondary">
@@ -1307,9 +1309,6 @@
 
         <section class="website-row section-pad">
           <a id="websiteLink" class="website-pill" href="#" target="_blank" rel="noreferrer">
-            <span class="info-icon" aria-hidden="true">
-              <img id="websiteIcon" src="" alt="Website">
-            </span>
             <span id="websiteText"></span>
           </a>
         </section>
