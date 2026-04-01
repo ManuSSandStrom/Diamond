@@ -5,6 +5,9 @@
   },
   "branding": {
     "companyName": "Kushal Diamonds",
+    "heroBrandPrimary": "Kushal Diamonds",
+    "heroBrandSecondary": "Rajen Diamonds",
+    "heroBrandSince": "Since 1985",
     "designation": "Gemologist (D.G)",
     "tagline": "Certified Solitaire \u2022 Studded Jewellery \u2022 Gem Stones\nStockist of Loose Diamonds (EF VVS Quality)",
     "trustHeadingTop": "WE STUD TRUST ALONG WITH",
@@ -43,6 +46,7 @@
     "poweredByUrl": "https://goodux.in/"
   },
   "assets": {
+    "favicon": "Assets/favicon.svg",
     "background": "Assets/PageBg.svg",
     "banner": "Assets/Banner.svg",
     "heroVideo": "Assets/Video/Diamond.webm",
