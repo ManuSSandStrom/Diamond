@@ -7,7 +7,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Jaykumar Shah | Kushal Diamonds">
   <meta property="og:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <meta id="ogImageMeta" property="og:image" content="Assets/Profile/ProfileThumbnail.png">
+  <meta id="twitterCardMeta" name="twitter:card" content="summary_large_image">
+  <meta id="twitterTitleMeta" name="twitter:title" content="Jaykumar Shah | Kushal Diamonds">
+  <meta id="twitterDescriptionMeta" name="twitter:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
+  <meta id="twitterImageMeta" name="twitter:image" content="Assets/Profile/ProfileThumbnail.png">
   <title>Jaykumar Shah | Kushal Diamonds</title>
+  <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
+  <link rel="apple-touch-icon" href="Assets/Profile/ProfileThumbnail.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -202,7 +209,7 @@
       width: 132px;
       height: 132px;
       border-radius: 50%;
-      border: 8px solid #f6f6f6;
+      border: 4px solid #f1f1f1;
       object-fit: cover;
       background: #ffffff;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
@@ -226,7 +233,7 @@
       color: #000000;
       font-size: 40px;
       font-weight: 700;
-      line-height: 30px;
+      line-height: 53px;
       letter-spacing: 0;
     }
 
@@ -235,7 +242,7 @@
       color: var(--gold);
       font-size: 22px;
       font-weight: 500;
-      line-height: 24px;
+      line-height: 29px;
     }
 
     .tagline {
@@ -259,20 +266,21 @@
     .contact-strip {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        "phone socials"
+        "email email";
       width: 100%;
       max-width: 440px;
-      min-height: 74px;
-      align-items: center;
-      gap: 18px;
+      min-height: 92px;
+      align-items: start;
+      column-gap: 14px;
+      row-gap: 10px;
       box-sizing: border-box;
       margin: 0 auto;
     }
 
     .contact-list {
-      width: 100%;
-      display: grid;
-      gap: 8px;
-      min-width: 0;
+      display: contents;
     }
 
     .contact-row {
@@ -296,14 +304,25 @@
       line-height: 22px;
     }
 
+    #phoneLink {
+      grid-area: phone;
+      min-height: 32px;
+    }
+
+    #emailLink {
+      grid-area: email;
+      min-height: 32px;
+    }
+
     .quick-socials {
+      grid-area: socials;
       display: flex;
-      gap: 8px;
+      gap: 12px;
       width: max-content;
       justify-content: flex-end;
       align-items: center;
       justify-self: end;
-      margin-left: auto;
+      align-self: center;
       flex: 0 0 auto;
     }
 
@@ -311,8 +330,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       transition: transform 0.18s ease;
     }
@@ -325,17 +344,17 @@
     }
 
     .quick-social img {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
     }
 
     .action-row {
       display: grid;
       width: 440px;
-      height: 90px;
+      height: 84px;
       max-width: 100%;
-      grid-template-columns: 189.2px 179.07px 44px;
-      column-gap: 10px;
+      grid-template-columns: 199.45px 1fr 61.48px;
+      column-gap: 12px;
       justify-content: start;
       align-items: center;
       align-content: center;
@@ -351,19 +370,19 @@
 
     .graphic-action img {
       width: auto;
-      height: 44px;
+      height: 46px;
     }
 
     .share-action img {
-      width: 44px;
-      height: 44px;
+      width: 61.48px;
+      height: 61.48px;
     }
 
     .trust-copy {
       position: relative;
       text-align: center;
-      padding-top: 12px;
-      padding-bottom: 8px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     .trust-badge-wrap {
@@ -384,19 +403,19 @@
     .trust-top {
       color: var(--navy);
       font-family: "Cormorant Garamond", serif;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
-      line-height: 1.02;
+      line-height: 26px;
       letter-spacing: 0.02em;
     }
 
     .trust-bottom {
-      margin-top: 1px;
+      margin-top: 2px;
       color: var(--gold);
       font-family: "Cormorant Garamond", serif;
-      font-size: 30px;
+      font-size: 58px;
       font-weight: 700;
-      line-height: 0.96;
+      line-height: 39px;
       letter-spacing: 0.01em;
     }
 
@@ -413,20 +432,134 @@
     }
 
     .feature-image-frame {
+      position: relative;
+      box-sizing: border-box;
       width: 440px;
       height: 320px;
-      background: #ffffff 0% 0% no-repeat padding-box;
+      padding: 14px 18px 22px;
+      background: linear-gradient(180deg, #060606 0%, #151515 100%);
       opacity: 1;
       flex: 0 0 auto;
       overflow: hidden;
-      border-radius: 18px;
+      border-radius: 24px;
+      box-shadow: 0 22px 40px rgba(5, 16, 66, 0.16);
     }
 
-    .feature-image img {
-      width: 440px;
-      height: 320px;
+    .feature-gallery {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .feature-gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .feature-slide {
+      position: relative;
+      flex: 0 0 330px;
+      width: 330px;
+      height: 100%;
+      scroll-snap-align: start;
+      overflow: hidden;
+      background: #060606;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .feature-slide::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 92px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 2, 2, 0.22) 100%);
+      pointer-events: none;
+    }
+
+    .feature-slide img {
+      width: 100%;
+      height: 100%;
       display: block;
       object-fit: cover;
+      transition: transform 0.28s ease;
+    }
+
+    .feature-slide:hover img {
+      transform: scale(1.03);
+    }
+
+    .feature-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(8, 14, 34, 0.82);
+      color: #ffffff;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .feature-nav:hover {
+      transform: translateY(-50%) scale(1.03);
+    }
+
+    .feature-nav.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .feature-nav--prev {
+      left: 24px;
+    }
+
+    .feature-nav--next {
+      right: 24px;
+    }
+
+    .feature-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      z-index: 2;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(6, 11, 25, 0.42);
+      backdrop-filter: blur(8px);
+    }
+
+    .feature-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.46);
+      transition: transform 0.18s ease, background-color 0.18s ease, width 0.18s ease;
+    }
+
+    .feature-dot.is-active {
+      width: 22px;
+      border-radius: 999px;
+      background: #ffffff;
     }
 
     .service-block-frame {
@@ -820,7 +953,7 @@
       .profile-photo {
         width: 96px;
         height: 96px;
-        border-width: 6px;
+        border-width: 4px;
       }
 
       .identity {
@@ -848,11 +981,14 @@
       .contact-strip {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+          "phone socials"
+          "email email";
         gap: 12px;
         width: 100%;
         max-width: 440px;
         height: auto;
-        align-items: center;
+        align-items: start;
       }
 
       .contact-text {
@@ -882,11 +1018,26 @@
       }
 
       .feature-image-frame,
-      .feature-image img,
       .service-block-frame,
       .service-block img {
         width: 100%;
         height: auto;
+      }
+
+      .feature-image-frame {
+        aspect-ratio: 440 / 320;
+        padding: 12px 14px 20px;
+      }
+
+      .feature-gallery,
+      .feature-slide,
+      .feature-slide img {
+        height: 100%;
+      }
+
+      .feature-slide {
+        flex-basis: calc(100% - 32px);
+        width: calc(100% - 32px);
       }
 
       .info-card,
@@ -963,8 +1114,8 @@
 
       .quick-social,
       .quick-social img {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
       }
 
       .mobile-sticky__inner {
@@ -1082,7 +1233,10 @@
 
         <section class="feature-image section-pad">
           <div class="feature-image-frame">
-            <img id="featureImage" src="" alt="Featured diamond">
+            <button id="featurePrev" class="feature-nav feature-nav--prev" type="button" aria-label="Previous product">&#8249;</button>
+            <div id="featureGallery" class="feature-gallery" aria-label="Diamond product gallery"></div>
+            <button id="featureNext" class="feature-nav feature-nav--next" type="button" aria-label="Next product">&#8250;</button>
+            <div id="featureDots" class="feature-dots" aria-hidden="true"></div>
           </div>
         </section>
 
@@ -1202,7 +1356,10 @@
       shareIcon: document.getElementById("shareIcon"),
       trustBadgeWrap: document.getElementById("trustBadgeWrap"),
       trustBadge: document.getElementById("trustBadge"),
-      featureImage: document.getElementById("featureImage"),
+      featureGallery: document.getElementById("featureGallery"),
+      featurePrev: document.getElementById("featurePrev"),
+      featureNext: document.getElementById("featureNext"),
+      featureDots: document.getElementById("featureDots"),
       serviceBlockImage: document.getElementById("serviceBlockImage"),
       brochureButton: document.getElementById("brochureButton"),
       addressIcon: document.getElementById("addressIcon"),
@@ -1247,6 +1404,8 @@
       profile: null
     };
 
+    let featureGalleryTimer = null;
+
     function setImage(element, src, alt) {
       if (!element || !src) return;
       element.src = src;
@@ -1277,6 +1436,125 @@
       imageElement.onload = function () {
         wrapperElement.classList.remove("hidden");
       };
+    }
+
+    function clearFeatureGalleryTimer() {
+      if (featureGalleryTimer) {
+        window.clearInterval(featureGalleryTimer);
+        featureGalleryTimer = null;
+      }
+    }
+
+    function renderFeatureGallery(images) {
+      if (!elements.featureGallery || !elements.featureDots || !elements.featurePrev || !elements.featureNext) {
+        return;
+      }
+
+      clearFeatureGalleryTimer();
+      const validImages = Array.isArray(images) ? images.filter(Boolean) : [];
+      elements.featureGallery.innerHTML = "";
+      elements.featureDots.innerHTML = "";
+      elements.featureGallery.scrollLeft = 0;
+
+      if (!validImages.length) {
+        elements.featurePrev.classList.add("is-hidden");
+        elements.featureNext.classList.add("is-hidden");
+        elements.featureDots.classList.add("hidden");
+        return;
+      }
+
+      validImages.forEach(function (src, index) {
+        const slide = document.createElement("figure");
+        slide.className = "feature-slide";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Diamond product ${index + 1}`;
+        slide.appendChild(img);
+        elements.featureGallery.appendChild(slide);
+
+        const dot = document.createElement("span");
+        dot.className = "feature-dot";
+        if (index === 0) {
+          dot.classList.add("is-active");
+        }
+        elements.featureDots.appendChild(dot);
+      });
+
+      const slides = Array.from(elements.featureGallery.children);
+      const dots = Array.from(elements.featureDots.children);
+      const getActiveIndex = function () {
+        const currentLeft = elements.featureGallery.scrollLeft;
+        let nearestIndex = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        slides.forEach(function (slide, index) {
+          const distance = Math.abs(slide.offsetLeft - currentLeft);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = index;
+          }
+        });
+
+        return nearestIndex;
+      };
+
+      const setActiveState = function (activeIndex) {
+        dots.forEach(function (dot, index) {
+          dot.classList.toggle("is-active", index === activeIndex);
+        });
+        elements.featurePrev.classList.toggle("is-hidden", activeIndex <= 0);
+        elements.featureNext.classList.toggle("is-hidden", activeIndex >= validImages.length - 1);
+      };
+
+      const updateFeatureState = function () {
+        setActiveState(getActiveIndex());
+      };
+
+      const scrollToSlide = function (index, behavior) {
+        if (!slides[index]) return;
+        elements.featureGallery.scrollTo({
+          left: slides[index].offsetLeft,
+          behavior: behavior || "smooth"
+        });
+        setActiveState(index);
+      };
+
+      const scrollByDirection = function (direction) {
+        const activeIndex = getActiveIndex();
+        const targetIndex = Math.max(0, Math.min(validImages.length - 1, activeIndex + direction));
+        scrollToSlide(targetIndex, "smooth");
+      };
+
+      const startAutoScroll = function () {
+        clearFeatureGalleryTimer();
+        if (validImages.length <= 1) return;
+
+        featureGalleryTimer = window.setInterval(function () {
+          const activeIndex = getActiveIndex();
+          const targetIndex = activeIndex >= validImages.length - 1 ? 0 : activeIndex + 1;
+          scrollToSlide(targetIndex, "smooth");
+        }, 3400);
+      };
+
+      elements.featureGallery.onscroll = updateFeatureState;
+      elements.featureGallery.onmouseenter = clearFeatureGalleryTimer;
+      elements.featureGallery.onmouseleave = startAutoScroll;
+      elements.featureGallery.onpointerdown = clearFeatureGalleryTimer;
+      elements.featureGallery.onpointerup = startAutoScroll;
+      elements.featurePrev.onclick = function () {
+        clearFeatureGalleryTimer();
+        scrollByDirection(-1);
+        startAutoScroll();
+      };
+      elements.featureNext.onclick = function () {
+        clearFeatureGalleryTimer();
+        scrollByDirection(1);
+        startAutoScroll();
+      };
+      elements.featureDots.classList.toggle("hidden", validImages.length <= 1);
+      scrollToSlide(0, "auto");
+      startAutoScroll();
     }
 
     function setHeroMedia(videoSrc, bannerSrc, posterSrc = "") {
@@ -1323,6 +1601,13 @@
       elements.statusMessage.classList.add("hidden");
     }
 
+    function setMetaContent(selector, value) {
+      const node = document.querySelector(selector);
+      if (node && value) {
+        node.setAttribute("content", value);
+      }
+    }
+
     function bindOptionalLink(element, url) {
       if (!element) return;
 
@@ -1365,6 +1650,17 @@
 
     function downloadVCard() {
       if (!state.profile) return;
+
+      const contactFile = state.profile.person && state.profile.person.contactFile;
+      if (contactFile) {
+        const anchor = document.createElement("a");
+        anchor.href = contactFile;
+        anchor.download = "";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        return;
+      }
 
       const fileName = `${state.profile.person.name.replace(/\s+/g, "-")}.vcf`;
       const blob = new Blob([buildVCard(state.profile)], { type: "text/vcard;charset=utf-8" });
@@ -1464,12 +1760,18 @@
       if (metaDescription && meta.description) {
         metaDescription.setAttribute("content", meta.description);
       }
+      setMetaContent('meta[property="og:title"]', meta.title || document.title);
+      setMetaContent('meta[property="og:description"]', meta.description || "");
+      setMetaContent('meta[name="twitter:title"]', meta.title || document.title);
+      setMetaContent('meta[name="twitter:description"]', meta.description || "");
+      setMetaContent('meta[property="og:image"]', assets.thumbnail || person.profilePhoto || "");
+      setMetaContent('meta[name="twitter:image"]', assets.thumbnail || person.profilePhoto || "");
 
       if (assets.background) {
         document.documentElement.style.setProperty("--page-bg-image", `url("${assets.background}")`);
       }
 
-      setHeroMedia(assets.heroVideo, assets.banner, assets.heroVideoPoster || "");
+      setHeroMedia(assets.heroVideo, assets.banner, assets.heroVideoPoster || assets.thumbnail || person.profilePhoto || "");
       setOptionalImage(elements.heroBrandWrap, elements.heroBrand, assets.companyLogo, branding.companyName || "Kushal Diamonds");
       setImage(elements.profilePhoto, person.profilePhoto, person.name || "Profile photo");
       setImage(elements.phoneIcon, assets.phoneIcon, "Phone icon");
@@ -1483,7 +1785,7 @@
       setImage(elements.mobileSaveImage, assets.saveButton, "Add to contacts");
       setImage(elements.shareIcon, assets.shareIcon, "Share");
       setOptionalImage(elements.trustBadgeWrap, elements.trustBadge, assets.trustBadge, "Trust badge");
-      setImage(elements.featureImage, assets.featureImage, "Featured diamond");
+      renderFeatureGallery(assets.productGallery && assets.productGallery.length ? assets.productGallery : [assets.featureImage]);
       setImage(elements.serviceBlockImage, assets.serviceBlock, "Diamond services");
       setImage(elements.brochureButton, assets.downloadBrochureButton, branding.brochureLabel || "Download brochure");
       setImage(elements.addressIcon, assets.addressIcon, "Location");

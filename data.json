@@ -15,7 +15,8 @@
   },
   "person": {
     "name": "Jaykumar Shah",
-    "profilePhoto": "Assets/Profile/Jaykumar.png"
+    "profilePhoto": "Assets/Profile/Jaykumar.png",
+    "contactFile": "Assets/Profile/Jaykumar.vcf"
   },
   "contact": {
     "countryCode": "+91",
@@ -45,7 +46,20 @@
     "background": "Assets/PageBg.svg",
     "banner": "Assets/Banner.svg",
     "heroVideo": "Assets/Video/Diamond.webm",
+    "heroVideoPoster": "Assets/Profile/ProfileThumbnail.png",
     "featureImage": "Assets/Product/Product1.png",
+    "productGallery": [
+      "Assets/Product/Product1.png",
+      "Assets/Product/Product2.png",
+      "Assets/Product/Product3.png",
+      "Assets/Product/Product4.png",
+      "Assets/Product/Product5.png",
+      "Assets/Product/Product6.png",
+      "Assets/Product/Product7.png",
+      "Assets/Product/Product8.png",
+      "Assets/Product/Product9.png",
+      "Assets/Product/Product10.png"
+    ],
     "serviceBlock": "Assets/Service_Block.svg",
     "companyLogo": "Assets/Company_Logo.svg",
     "downloadBrochureButton": "Assets/DownloadBrochure.svg",
