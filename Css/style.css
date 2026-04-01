@@ -549,6 +549,30 @@ svg{
     white-space: normal;
 }
 
+.card-section:not(.preview) .contact-section {
+    padding: 16px 10px 14px 10px;
+}
+
+.card-section:not(.preview) .contact-section .left a,
+.card-section:not(.preview) .contact-section .right a {
+    color: #000000;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.card-section:not(.preview) .contact-section .right {
+    gap: 8px;
+}
+
+.card-section:not(.preview) #country {
+    font-weight: 400;
+}
+
+.card-section:not(.preview) #phone,
+.card-section:not(.preview) #email {
+    font-weight: 700;
+}
+
 .contact-section .right{
     display: flex;
     height: 100%;
