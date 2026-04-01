@@ -379,15 +379,14 @@
     }
 
     .action-row {
-      display: grid;
+      display: flex;
       width: 440px;
-      height: 84px;
+      min-height: 60px;
       max-width: 100%;
-      grid-template-columns: 199.45px 1fr 61.48px;
-      column-gap: 12px;
-      justify-content: start;
+      gap: 14px;
+      justify-content: center;
       align-items: center;
-      align-content: center;
+      margin: 0 auto;
     }
 
     .graphic-action,
@@ -395,17 +394,20 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: auto;
+      flex: 0 0 auto;
+      min-width: 0;
     }
 
     .graphic-action img {
       width: auto;
       height: 46px;
+      display: block;
     }
 
     .share-action img {
-      width: 61.48px;
-      height: 61.48px;
+      width: 44px;
+      height: 44px;
+      display: block;
     }
 
     .trust-copy {
@@ -463,24 +465,21 @@
 
     .feature-image-frame {
       position: relative;
-      box-sizing: border-box;
       width: 440px;
       height: 320px;
-      padding: 14px 18px 22px;
-      background: linear-gradient(180deg, #060606 0%, #151515 100%);
+      background: #060606;
       opacity: 1;
       flex: 0 0 auto;
       overflow: hidden;
-      border-radius: 24px;
-      box-shadow: 0 22px 40px rgba(5, 16, 66, 0.16);
+      border-radius: 18px;
+      box-shadow: 0 16px 30px rgba(5, 16, 66, 0.14);
     }
 
     .feature-gallery {
       display: flex;
-      gap: 14px;
       width: 100%;
       height: 100%;
-      overflow-x: auto;
+      overflow-x: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       scrollbar-width: none;
@@ -493,22 +492,20 @@
 
     .feature-slide {
       position: relative;
-      flex: 0 0 330px;
-      width: 330px;
+      flex: 0 0 100%;
+      width: 440px;
       height: 100%;
       scroll-snap-align: start;
       overflow: hidden;
       background: #060606;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
+      border-radius: 18px;
     }
 
     .feature-slide::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 92px;
+      height: 88px;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 2, 2, 0.22) 100%);
       pointer-events: none;
     }
@@ -556,11 +553,11 @@
     }
 
     .feature-nav--prev {
-      left: 24px;
+      left: 18px;
     }
 
     .feature-nav--next {
-      right: 24px;
+      right: 18px;
     }
 
     .feature-dots {
@@ -1058,7 +1055,6 @@
 
       .feature-image-frame {
         aspect-ratio: 440 / 320;
-        padding: 12px 14px 20px;
       }
 
       .feature-gallery,
@@ -1068,8 +1064,8 @@
       }
 
       .feature-slide {
-        flex-basis: calc(100% - 32px);
-        width: calc(100% - 32px);
+        flex-basis: 100%;
+        width: 100%;
       }
 
       .info-card,
@@ -1541,8 +1537,9 @@
         dots.forEach(function (dot, index) {
           dot.classList.toggle("is-active", index === activeIndex);
         });
-        elements.featurePrev.classList.toggle("is-hidden", activeIndex <= 0);
-        elements.featureNext.classList.toggle("is-hidden", activeIndex >= validImages.length - 1);
+        const shouldHideControls = validImages.length <= 1;
+        elements.featurePrev.classList.toggle("is-hidden", shouldHideControls);
+        elements.featureNext.classList.toggle("is-hidden", shouldHideControls);
       };
 
       const updateFeatureState = function () {
@@ -1560,7 +1557,7 @@
 
       const scrollByDirection = function (direction) {
         const activeIndex = getActiveIndex();
-        const targetIndex = Math.max(0, Math.min(validImages.length - 1, activeIndex + direction));
+        const targetIndex = (activeIndex + direction + validImages.length) % validImages.length;
         scrollToSlide(targetIndex, "smooth");
       };
 
