@@ -684,6 +684,14 @@
       object-fit: contain;
     }
 
+    .about-section {
+      width: 440px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: grid;
+      justify-items: start;
+    }
+
     .about-title {
       width: max-content;
       min-width: 219px;
@@ -725,6 +733,7 @@
       max-width: 100%;
       display: block;
       padding-top: 18px;
+      justify-self: start;
     }
 
     .brochure-link {
@@ -758,13 +767,14 @@
 
     .info-card {
       display: block;
-      width: 100%;
+      width: 424px;
       max-width: 100%;
       padding: 0;
       border: 0;
       border-radius: 0;
       background: transparent;
       box-shadow: none;
+      justify-self: start;
     }
 
     .info-icon {
@@ -779,8 +789,9 @@
     .contact-secondary {
       display: grid;
       gap: 6px;
-      width: 100%;
+      width: 424px;
       max-width: 100%;
+      justify-self: start;
     }
 
     .address-text {
@@ -1379,7 +1390,7 @@
 
         <hr class="divider">
 
-        <section class="section-pad">
+        <section class="about-section section-pad">
           <h2 id="aboutTitle" class="about-title"></h2>
           <p id="aboutDescription" class="about-copy"></p>
 
