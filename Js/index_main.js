@@ -200,12 +200,23 @@ async function main() {
 
   // ===== WhatsApp =====
   if (p.whatsappNumber || p.whatsapp) {
-    document.getElementById("whatsappLink").href = p.whatsapp || `https://wa.me/${whatsappPhone}`;
+    const whatsappHref = p.whatsapp || `https://wa.me/${whatsappPhone}`;
+    document.getElementById("whatsappLink").href = whatsappHref;
+    const previewWhatsapp = document.getElementById("previewWhatsappLink");
+    if (previewWhatsapp) {
+      previewWhatsapp.href = whatsappHref;
+      previewWhatsapp.style.display = "";
+    }
   }else{
     document.getElementById("whatsappLink").style.display = 'none';
+    const previewWhatsapp = document.getElementById("previewWhatsappLink");
+    if (previewWhatsapp) {
+      previewWhatsapp.style.display = "none";
+    }
   }
   // ===== LinkedIn =====
   bindVisibleLink("linkedinLink", p.linkedin, p.website);
+  bindVisibleLink("previewLinkedinLink", p.linkedin, p.website);
 
   const socialLinks = p.socialLinks || {};
   bindOptionalLink("company-youtube", socialLinks.youtube);
