@@ -838,21 +838,24 @@
     }
 
     .website-row {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-template-rows: 17px 32px 21px;
+      align-items: stretch;
       width: 100%;
       max-width: 440px;
       height: 70px;
-      padding: 11px 10px 21px;
+      padding: 0 10px;
       box-sizing: border-box;
       margin: 0 auto;
     }
 
     .website-pill {
-      display: block;
+      grid-row: 2;
+      display: inline-flex;
+      align-items: center;
       width: max-content;
       max-width: 100%;
-      min-height: 38px;
+      min-height: 32px;
       padding: 0;
       border-radius: 0;
       border: 0;
@@ -860,7 +863,7 @@
       color: var(--navy);
       font-size: 20px;
       font-weight: 400;
-      line-height: 38px;
+      line-height: 32px;
       box-shadow: none;
     }
 
