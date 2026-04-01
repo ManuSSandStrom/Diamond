@@ -1099,7 +1099,7 @@
       .brochure-row {
         width: min(100%, 430px);
         min-height: 0;
-        padding-top: 12px;
+        padding-top: 16px;
       }
 
       .brochure-link {
@@ -1109,17 +1109,24 @@
       }
 
       .about-title {
-        width: 100%;
+        width: auto;
         min-width: 0;
+        max-width: 300px;
         white-space: normal;
         font-size: 22px;
         line-height: 24px;
       }
 
       .about-copy {
-        margin-top: 8px;
+        width: auto;
+        max-width: 300px;
+        margin-top: 10px;
         font-size: 14px;
-        line-height: 20px;
+        line-height: 24px;
+      }
+
+      .about-copy strong {
+        font-weight: 700;
       }
 
       .feature-image-frame,
@@ -1164,14 +1171,20 @@
       }
 
       .address-block {
-        padding-top: 14px;
-        gap: 12px;
+        padding-top: 16px;
+        gap: 14px;
+      }
+
+      .info-card,
+      .contact-secondary {
+        width: auto;
+        max-width: 300px;
       }
 
       .address-text {
         width: auto;
         font-size: 13px;
-        line-height: 19px;
+        line-height: 18px;
       }
 
       .contact-secondary,
@@ -1184,6 +1197,7 @@
       }
 
       .contact-inline {
+        width: auto;
         font-size: 14px;
         line-height: 20px;
       }
@@ -1193,11 +1207,13 @@
         align-items: center;
         height: auto;
         min-height: 0;
-        padding-top: 2px;
-        padding-bottom: 2px;
+        padding-top: 4px;
+        padding-bottom: 4px;
       }
 
       .website-pill {
+        width: auto;
+        max-width: 300px;
         min-height: 0;
         font-size: 14px;
         line-height: 20px;
@@ -1205,15 +1221,16 @@
 
       .company-socials {
         height: auto;
-        padding-top: 8px;
-        padding-bottom: 4px;
+        gap: 10px;
+        padding-top: 10px;
+        padding-bottom: 8px;
       }
 
       .footer {
         height: auto;
         min-height: 0;
-        padding-top: 10px;
-        padding-bottom: 18px;
+        padding-top: 12px;
+        padding-bottom: 16px;
       }
 
       .footer a {
@@ -1241,6 +1258,15 @@
         padding-right: 16px;
       }
 
+      .about-section,
+      .address-block,
+      .website-row,
+      .company-socials,
+      .footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
       .divider {
         margin-top: 12px;
         margin-bottom: 12px;
@@ -1257,6 +1283,14 @@
         max-width: 300px;
         font-size: 14px;
         line-height: 18px;
+      }
+
+      .about-title,
+      .about-copy,
+      .info-card,
+      .contact-secondary,
+      .website-pill {
+        max-width: 292px;
       }
 
       .contact-text {
