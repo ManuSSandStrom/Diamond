@@ -564,13 +564,31 @@ svg{
     gap: 8px;
 }
 
+.card-section:not(.preview) #phoneLink,
+.card-section:not(.preview) #emailLink {
+    font-family: 'Roboto';
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    opacity: 1;
+}
+
 .card-section:not(.preview) #country {
     font-weight: 400;
+    margin-right: 6px;
 }
 
 .card-section:not(.preview) #phone,
 .card-section:not(.preview) #email {
     font-weight: 700;
+}
+
+.card-section:not(.preview) .contact-section .left .icon,
+.card-section:not(.preview) .contact-section .right .icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 12px;
+    opacity: 0.4;
 }
 
 .contact-section .right{
