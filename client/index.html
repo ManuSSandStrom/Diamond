@@ -600,75 +600,6 @@
       transform: scale(1.03);
     }
 
-    .feature-nav {
-      display: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(8, 14, 34, 0.82);
-      color: #ffffff;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      transition: transform 0.18s ease, opacity 0.18s ease;
-    }
-
-    .feature-nav:hover {
-      transform: translateY(-50%) scale(1.03);
-    }
-
-    .feature-nav.is-hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .feature-nav--prev {
-      left: 18px;
-    }
-
-    .feature-nav--next {
-      right: 18px;
-    }
-
-    .feature-dots {
-      display: none;
-      position: absolute;
-      left: 50%;
-      bottom: 16px;
-      z-index: 2;
-      transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(6, 11, 25, 0.42);
-      backdrop-filter: blur(8px);
-    }
-
-    .feature-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.46);
-      transition: transform 0.18s ease, background-color 0.18s ease, width 0.18s ease;
-    }
-
-    .feature-dot.is-active {
-      width: 22px;
-      border-radius: 999px;
-      background: #ffffff;
-    }
-
     .service-block-frame {
       width: 440px;
       height: 245px;
@@ -1389,10 +1320,7 @@
 
         <section class="feature-image section-pad">
           <div class="feature-image-frame">
-            <button id="featurePrev" class="feature-nav feature-nav--prev" type="button" aria-label="Previous product">&#8249;</button>
             <div id="featureGallery" class="feature-gallery" aria-label="Diamond product gallery"></div>
-            <button id="featureNext" class="feature-nav feature-nav--next" type="button" aria-label="Next product">&#8250;</button>
-            <div id="featureDots" class="feature-dots" aria-hidden="true"></div>
           </div>
         </section>
 
@@ -1601,9 +1529,6 @@
       trustBadgeWrap: document.getElementById("trustBadgeWrap"),
       trustBadge: document.getElementById("trustBadge"),
       featureGallery: document.getElementById("featureGallery"),
-      featurePrev: document.getElementById("featurePrev"),
-      featureNext: document.getElementById("featureNext"),
-      featureDots: document.getElementById("featureDots"),
       serviceBlockImage: document.getElementById("serviceBlockImage"),
       brochureButton: document.getElementById("brochureButton"),
       addressIcon: document.getElementById("addressIcon"),
@@ -1718,20 +1643,16 @@
     }
 
     function renderFeatureGallery(images) {
-      if (!elements.featureGallery || !elements.featureDots || !elements.featurePrev || !elements.featureNext) {
+      if (!elements.featureGallery) {
         return;
       }
 
       clearFeatureGalleryTimer();
       const validImages = Array.isArray(images) ? images.filter(Boolean) : [];
       elements.featureGallery.innerHTML = "";
-      elements.featureDots.innerHTML = "";
       elements.featureGallery.scrollLeft = 0;
 
       if (!validImages.length) {
-        elements.featurePrev.classList.add("is-hidden");
-        elements.featureNext.classList.add("is-hidden");
-        elements.featureDots.classList.add("hidden");
         return;
       }
 
@@ -1744,17 +1665,9 @@
         img.alt = `Diamond product ${index + 1}`;
         slide.appendChild(img);
         elements.featureGallery.appendChild(slide);
-
-        const dot = document.createElement("span");
-        dot.className = "feature-dot";
-        if (index === 0) {
-          dot.classList.add("is-active");
-        }
-        elements.featureDots.appendChild(dot);
       });
 
       const slides = Array.from(elements.featureGallery.children);
-      const dots = Array.from(elements.featureDots.children);
       const getActiveIndex = function () {
         const currentLeft = elements.featureGallery.scrollLeft;
         let nearestIndex = 0;
@@ -1771,32 +1684,12 @@
         return nearestIndex;
       };
 
-      const setActiveState = function (activeIndex) {
-        dots.forEach(function (dot, index) {
-          dot.classList.toggle("is-active", index === activeIndex);
-        });
-        const shouldHideControls = validImages.length <= 1;
-        elements.featurePrev.classList.toggle("is-hidden", shouldHideControls);
-        elements.featureNext.classList.toggle("is-hidden", shouldHideControls);
-      };
-
-      const updateFeatureState = function () {
-        setActiveState(getActiveIndex());
-      };
-
       const scrollToSlide = function (index, behavior) {
         if (!slides[index]) return;
         elements.featureGallery.scrollTo({
           left: slides[index].offsetLeft,
           behavior: behavior || "smooth"
         });
-        setActiveState(index);
-      };
-
-      const scrollByDirection = function (direction) {
-        const activeIndex = getActiveIndex();
-        const targetIndex = (activeIndex + direction + validImages.length) % validImages.length;
-        scrollToSlide(targetIndex, "smooth");
       };
 
       const startAutoScroll = function () {
@@ -1810,22 +1703,11 @@
         }, 3400);
       };
 
-      elements.featureGallery.onscroll = updateFeatureState;
+      elements.featureGallery.onscroll = null;
       elements.featureGallery.onmouseenter = clearFeatureGalleryTimer;
       elements.featureGallery.onmouseleave = startAutoScroll;
       elements.featureGallery.onpointerdown = clearFeatureGalleryTimer;
       elements.featureGallery.onpointerup = startAutoScroll;
-      elements.featurePrev.onclick = function () {
-        clearFeatureGalleryTimer();
-        scrollByDirection(-1);
-        startAutoScroll();
-      };
-      elements.featureNext.onclick = function () {
-        clearFeatureGalleryTimer();
-        scrollByDirection(1);
-        startAutoScroll();
-      };
-      elements.featureDots.classList.toggle("hidden", validImages.length <= 1);
       scrollToSlide(0, "auto");
       startAutoScroll();
     }
