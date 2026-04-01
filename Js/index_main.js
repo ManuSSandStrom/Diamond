@@ -1,14 +1,51 @@
-$(document).ready(function(){
-    $('.Product-Slider').slick({
-        dots: false,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        slidesToShow: 1,
-        slidesToScroll: 1
+function initProductSliderMarquee() {
+    const slider = document.querySelector(".Product-Slider");
+    if (!slider || slider.dataset.enhanced === "true") return;
+
+    const sourceImages = Array.from(slider.querySelectorAll("img"));
+    if (sourceImages.length <= 1) {
+        slider.dataset.enhanced = "true";
+        return;
+    }
+
+    const track = document.createElement("div");
+    track.className = "product-marquee-track";
+
+    const buildSlide = (image, index) => {
+        const slide = document.createElement("div");
+        slide.className = "product-marquee-slide";
+
+        const clone = image.cloneNode(true);
+        clone.loading = index < sourceImages.length ? "eager" : "lazy";
+        slide.appendChild(clone);
+        return slide;
+    };
+
+    sourceImages.forEach((image, index) => {
+        track.appendChild(buildSlide(image, index));
     });
+
+    sourceImages.forEach((image, index) => {
+        const duplicate = buildSlide(image, index + sourceImages.length);
+        duplicate.setAttribute("aria-hidden", "true");
+        track.appendChild(duplicate);
+    });
+
+    slider.innerHTML = "";
+    slider.appendChild(track);
+
+    const syncSlideWidth = () => {
+        slider.style.setProperty("--product-slide-width", `${slider.clientWidth}px`);
+    };
+
+    slider.style.setProperty("--product-slide-count", String(sourceImages.length));
+    syncSlideWidth();
+    window.addEventListener("resize", syncSlideWidth);
+    slider.dataset.enhanced = "true";
+}
+
+$(document).ready(function(){
+    initProductSliderMarquee();
     $('.Customer-Slider').slick({
         dots: false,
         arrows: false,

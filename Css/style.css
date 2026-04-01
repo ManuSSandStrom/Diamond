@@ -765,6 +765,39 @@ svg{
     max-width: 100%;
 }
 
+.Product-Slider{
+    --product-slide-width: 440px;
+    --product-slide-count: 10;
+    overflow: hidden;
+}
+
+.product-marquee-track{
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: product-marquee-scroll 40s linear infinite;
+}
+
+.product-marquee-slide{
+    flex: 0 0 var(--product-slide-width);
+    width: var(--product-slide-width);
+}
+
+.product-marquee-slide img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@keyframes product-marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(var(--product-slide-width) * -1 * var(--product-slide-count)));
+    }
+}
+
 .service-contents video{
     width: 100%;
     height: auto;
