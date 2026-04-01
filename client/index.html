@@ -1097,29 +1097,34 @@
       }
 
       .brochure-row {
-        width: min(100%, 430px);
+        width: 100%;
         min-height: 0;
         padding-top: 16px;
       }
 
       .brochure-link {
-        width: min(100%, 430px);
+        width: 100%;
         height: auto;
         aspect-ratio: 430 / 110;
       }
 
+      .about-section,
+      .address-block {
+        width: min(100%, 438px);
+      }
+
       .about-title {
-        width: auto;
+        width: 100%;
         min-width: 0;
-        max-width: 300px;
+        max-width: none;
         white-space: normal;
         font-size: 22px;
         line-height: 24px;
       }
 
       .about-copy {
-        width: auto;
-        max-width: 300px;
+        width: 100%;
+        max-width: none;
         margin-top: 10px;
         font-size: 14px;
         line-height: 24px;
@@ -1177,12 +1182,12 @@
 
       .info-card,
       .contact-secondary {
-        width: auto;
-        max-width: 300px;
+        width: 100%;
+        max-width: none;
       }
 
       .address-text {
-        width: auto;
+        width: 100%;
         font-size: 13px;
         line-height: 18px;
       }
@@ -1197,7 +1202,7 @@
       }
 
       .contact-inline {
-        width: auto;
+        width: 100%;
         font-size: 14px;
         line-height: 20px;
       }
@@ -1214,8 +1219,8 @@
 
       .website-pill {
         grid-row: 2;
-        width: auto;
-        max-width: 300px;
+        width: 100%;
+        max-width: none;
         min-height: 32px;
         font-size: 14px;
         font-weight: 700;
@@ -1287,14 +1292,6 @@
         max-width: 300px;
         font-size: 14px;
         line-height: 18px;
-      }
-
-      .about-title,
-      .about-copy,
-      .info-card,
-      .contact-secondary,
-      .website-pill {
-        max-width: 292px;
       }
 
       .contact-text {
