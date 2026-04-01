@@ -1309,15 +1309,19 @@ svg{
 /* shareon related */
 .shareon>* {
     padding: 0 !important;
-    margin: 0 0 0 12px !important;
+    margin: 0 !important;
 }
 .shareon a {
     width: 30px;
     height: 30px;
 }
 .shareon a::before {
+    content: "";
+    display: block;
     width: 30px;
     height: 30px;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
 }
 .shareon>:before {
     top: 0 !important;
@@ -2290,6 +2294,8 @@ svg{
 #CardPreview .shareon {
     display: flex;
     align-items: center;
+    margin-left: auto;
+    gap: 12px;
 }
 
 @media screen and (max-width: 550px) {
