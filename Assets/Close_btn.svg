@@ -1,4 +1,6 @@
-<svg id="xcom" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <path id="Path_213652" data-name="Path 213652" d="M16,0A16,16,0,1,1,0,16,16,16,0,0,1,16,0Z"/>
-  <path id="X_logo_2023" d="M14.074,0h2.944L10.554,7.36l7.552,9.984H12.179L7.54,11.276,2.228,17.343H-.716L6.132,9.472-1.1,0H4.973L9.165,5.542Zm-1.03,15.615h1.632L4.116,1.664H2.362Z" transform="translate(8.163 7.328)" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="cross_icon" transform="translate(-0.033 -0.033)">
+    <path id="Path_183441" data-name="Path 183441" d="M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z" transform="translate(0.033 0.033)" fill="#0d0046"/>
+    <path id="Path_183440" data-name="Path 183440" d="M14.759,12.632,20.031,7.36A1.5,1.5,0,0,0,17.9,5.232L12.631,10.5,7.359,5.23A1.5,1.5,0,0,0,5.231,7.358L10.5,12.632,5.231,17.9a1.5,1.5,0,1,0,2.128,2.128l5.272-5.273,5.27,5.272A1.5,1.5,0,0,0,20.029,17.9Z" transform="translate(2.402 2.401)" fill="#fff"/>
+  </g>
 </svg>
