@@ -32,9 +32,10 @@
   <link id="canonicalLink" rel="canonical" href="https://jayakumarshah.netlify.app/">
   <link rel="image_src" href="https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png">
   <link id="faviconSvgLink" rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-  <link rel="shortcut icon" type="image/png" href="./assets/Profile/ProfileThumbnail.png">
+  <link id="shortcutIconLink" rel="shortcut icon" type="image/png" href="./assets/Profile/ProfileThumbnail.png">
   <link id="faviconPngLink" rel="icon" type="image/png" href="./assets/Profile/ProfileThumbnail.png">
   <link id="appleTouchIconLink" rel="apple-touch-icon" href="./assets/Profile/ProfileThumbnail.png">
+  <link rel="preload" as="image" href="./assets/Profile/ProfileThumbnail.png">
   <link rel="preload" as="image" href="./assets/Profile/SharePreview.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,12 +48,12 @@
           "@type": "Organization",
           "name": "Kushal Diamonds",
           "url": "https://jayakumarshah.netlify.app/",
-          "logo": "https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png"
+          "logo": "https://jayakumarshah.netlify.app/assets/Profile/ProfileThumbnail.png"
         },
         {
           "@type": "Person",
           "name": "Jaykumar Shah",
-          "image": "https://jayakumarshah.netlify.app/assets/Profile/SharePreview.png",
+          "image": "https://jayakumarshah.netlify.app/assets/Profile/ProfileThumbnail.png",
           "jobTitle": "Gemologist (D.G)",
           "email": "mailto:jayshah1976@gmail.com",
           "telephone": "+91 98400 98390",
@@ -431,6 +432,8 @@
       max-width: 100%;
       align-items: center;
       margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .graphic-action,
@@ -445,14 +448,14 @@
     }
 
     #exchangeAction {
-      width: 189.2px;
-      flex: 0 0 189.2px;
+      width: 188px;
+      flex: 0 0 188px;
       margin-right: 10px;
     }
 
     #saveContactAction {
-      width: 179.07px;
-      flex: 0 0 179.07px;
+      width: 178px;
+      flex: 0 0 178px;
       margin-right: 20px;
     }
 
@@ -480,19 +483,31 @@
       padding-bottom: 10px;
     }
 
+    .trust-copy.has-trust-art {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
     .trust-badge-wrap {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 10px;
+      width: 421px;
+      max-width: 100%;
+      aspect-ratio: 421 / 120;
+      margin: 0 auto;
       opacity: 1;
     }
 
     .trust-badge {
-      width: 140px;
-      height: 140px;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      display: block;
       background: transparent 0% 0% no-repeat padding-box;
       opacity: 1;
+    }
+
+    .trust-copy.has-trust-art .trust-top,
+    .trust-copy.has-trust-art .trust-bottom {
+      display: none;
     }
 
     .trust-top {
@@ -846,7 +861,7 @@
       align-items: center;
       justify-content: flex-start;
       width: 440px;
-      height: 66px;
+      height: 70px;
       max-width: 100%;
       padding: 19px 0 19px 10px;
       box-sizing: border-box;
@@ -858,30 +873,37 @@
       align-items: center;
       justify-content: center;
       width: auto;
-      height: 28px;
+      height: 32px;
     }
 
     .company-social img {
       width: auto;
-      height: 28px;
+      height: 32px;
       object-fit: contain;
     }
 
     .footer {
       display: flex;
-      align-items: flex-end;
-      padding-top: 0;
-      padding-bottom: 22px;
+      align-items: center;
+      justify-content: flex-start;
       width: 440px;
       height: 90px;
       max-width: 100%;
+      padding: 0 0 0 10px;
       box-sizing: border-box;
       margin: 0 auto;
     }
 
+    .footer a {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+    }
+
     .footer img {
-      width: 166.281px;
-      height: 25.913px;
+      width: auto;
+      height: 31px;
+      display: block;
     }
 
     .status {
@@ -1332,7 +1354,7 @@
 
         <hr class="divider">
 
-        <section class="trust-copy section-pad">
+        <section id="trustSection" class="trust-copy section-pad">
           <div id="trustBadgeWrap" class="trust-badge-wrap hidden">
             <img id="trustBadge" class="trust-badge" src="" alt="Trust badge">
           </div>
@@ -1503,6 +1525,7 @@
         ],
         "serviceBlock": "./assets/Service_Block.svg",
         "companyLogo": "./assets/Company_Logo.svg",
+        "trustBadge": "./assets/MessageBox.svg",
         "downloadBrochureButton": "./assets/DownloadBrochure.svg",
         "pdfIcon": "./assets/PDF_Icon.svg",
         "exchangeButton": "./assets/ExchangeContact.svg",
@@ -1567,6 +1590,7 @@
       poweredByImage: document.getElementById("poweredByImage"),
       phoneText: document.getElementById("phoneText"),
       emailText: document.getElementById("emailText"),
+      trustSection: document.getElementById("trustSection"),
       trustTop: document.getElementById("trustTop"),
       trustBottom: document.getElementById("trustBottom"),
       aboutTitle: document.getElementById("aboutTitle"),
@@ -1849,7 +1873,7 @@
       }
     }
 
-    function buildStructuredData(profile, canonicalUrl, imageUrl) {
+    function buildStructuredData(profile, canonicalUrl, imageUrl, thumbnailUrl) {
       const person = profile.person || {};
       const branding = profile.branding || {};
       const contact = profile.contact || {};
@@ -1865,13 +1889,13 @@
             "@type": "Organization",
             name: branding.companyName || "",
             url: canonicalUrl || company.websiteUrl || "",
-            logo: imageUrl || "",
+            logo: thumbnailUrl || imageUrl || "",
             sameAs: sameAs
           },
           {
             "@type": "Person",
             name: person.name || "",
-            image: imageUrl || "",
+            image: thumbnailUrl || imageUrl || "",
             jobTitle: branding.designation || "",
             email: contact.email ? `mailto:${contact.email}` : "",
             telephone: joinPhone(contact.countryCode, contact.phoneNumber) || "",
@@ -1894,10 +1918,10 @@
       };
     }
 
-    function renderStructuredData(profile, canonicalUrl, imageUrl) {
+    function renderStructuredData(profile, canonicalUrl, imageUrl, thumbnailUrl) {
       if (!elements.structuredData) return;
       elements.structuredData.textContent = JSON.stringify(
-        buildStructuredData(profile, canonicalUrl, imageUrl),
+        buildStructuredData(profile, canonicalUrl, imageUrl, thumbnailUrl),
         null,
         2
       );
@@ -2051,6 +2075,7 @@
       const assets = profile.assets || {};
       const shareImage = assets.sharePreview || assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "";
       const resolvedShareImage = resolveUrl(shareImage);
+      const resolvedThumbnail = resolveUrl(assets.thumbnail || person.profilePhoto || shareImage);
       const canonicalUrl = meta.siteUrl
         ? resolveUrl(meta.siteUrl)
         : window.location.protocol.startsWith("http")
@@ -2069,14 +2094,20 @@
       setMetaContent('meta[property="og:title"]', meta.title || document.title);
       setMetaContent('meta[property="og:description"]', meta.description || "");
       setMetaContent('meta[property="og:url"]', canonicalUrl);
+      setMetaContent('meta[property="og:image:url"]', resolvedShareImage);
+      setMetaContent('meta[property="og:image:secure_url"]', resolvedShareImage);
       setMetaContent('meta[name="twitter:title"]', meta.title || document.title);
       setMetaContent('meta[name="twitter:description"]', meta.description || "");
+      setMetaContent('meta[name="twitter:url"]', canonicalUrl);
       setMetaContent('meta[property="og:image"]', resolvedShareImage);
       setMetaContent('meta[property="og:image:alt"]', imageAlt);
       setMetaContent('meta[name="twitter:image"]', resolvedShareImage);
       setMetaContent('meta[name="twitter:image:alt"]', imageAlt);
+      setMetaContent('meta[itemprop="image"]', resolvedThumbnail || resolvedShareImage);
       setLinkHref('#canonicalLink', canonicalUrl);
+      setLinkHref('link[rel="image_src"]', resolvedShareImage);
       setLinkHref('#faviconSvgLink', assets.favicon || "./assets/favicon.svg");
+      setLinkHref('#shortcutIconLink', assets.thumbnail || person.profilePhoto || shareImage || "");
       setLinkHref('#faviconPngLink', assets.thumbnail || person.profilePhoto || shareImage || "");
       setLinkHref('#appleTouchIconLink', assets.thumbnail || person.profilePhoto || shareImage || "");
 
@@ -2097,7 +2128,9 @@
       setImage(elements.mobileSaveImage, assets.saveButton, "Add to contacts");
       setImage(elements.shareIcon, assets.shareIcon, "Share");
       setImage(elements.mobileShareIcon, assets.shareIcon, "Share");
-      setOptionalImage(elements.trustBadgeWrap, elements.trustBadge, assets.trustBadge, "Trust badge");
+      const hasTrustArtwork = Boolean(assets.trustBadge);
+      elements.trustSection.classList.toggle("has-trust-art", hasTrustArtwork);
+      setOptionalImage(elements.trustBadgeWrap, elements.trustBadge, assets.trustBadge, "We stud trust along with diamonds");
       renderFeatureGallery(assets.productGallery && assets.productGallery.length ? assets.productGallery : [assets.featureImage]);
       setImage(elements.serviceBlockImage, assets.serviceBlock, "Diamond services");
       setImage(elements.brochureButton, assets.downloadBrochureButton, branding.brochureLabel || "Download brochure");
@@ -2116,8 +2149,8 @@
         .map((line) => escapeHtml(line.trim()))
         .filter(Boolean)
         .join("<br>");
-      elements.trustTop.textContent = branding.trustHeadingTop || "";
-      elements.trustBottom.textContent = branding.trustHeadingBottom || "";
+      elements.trustTop.textContent = hasTrustArtwork ? "" : branding.trustHeadingTop || "";
+      elements.trustBottom.textContent = hasTrustArtwork ? "" : branding.trustHeadingBottom || "";
       elements.aboutTitle.textContent = branding.aboutTitle || "";
       elements.aboutDescription.innerHTML = branding.aboutDescriptionHtml || "";
 
@@ -2151,7 +2184,7 @@
       bindOptionalLink(elements.poweredByLink, company.poweredByUrl || "https://goodux.in/");
 
       configureBrochureLink(company.profilePdf);
-      renderStructuredData(profile, canonicalUrl, resolvedShareImage);
+      renderStructuredData(profile, canonicalUrl, resolvedShareImage, resolvedThumbnail);
 
       elements.loadingState.classList.add("hidden");
       elements.contentState.classList.remove("hidden");

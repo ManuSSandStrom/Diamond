@@ -1,3 +1,4 @@
+# Static site deploy: Netlify should publish the client folder directly.
 [build]
 publish = "client"
 
