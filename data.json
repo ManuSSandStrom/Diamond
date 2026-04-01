@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Jaykumar Shah | Kushal Diamonds",
-    "description": "Professional digital profile for Kushal Diamonds and Jaykumar Shah."
+    "description": "Professional digital profile for Kushal Diamonds and Jaykumar Shah.",
+    "siteUrl": "https://jayakumarshah.netlify.app/"
   },
   "branding": {
     "companyName": "Kushal Diamonds",
@@ -82,6 +83,7 @@
     "facebookIcon": "Assets/facebook_icon.svg",
     "instagramIcon": "Assets/Instagram_icon.svg",
     "companyLinkedinIcon": "Assets/linkedin_icon.svg",
-    "thumbnail": "Assets/Profile/ProfileThumbnail.png"
+    "thumbnail": "Assets/Profile/ProfileThumbnail.png",
+    "sharePreview": "Assets/Profile/SharePreview.png"
   }
 }

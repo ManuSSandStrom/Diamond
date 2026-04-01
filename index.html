@@ -9,22 +9,24 @@
   <meta id="ogSiteNameMeta" property="og:site_name" content="Kushal Diamonds">
   <meta property="og:title" content="Jaykumar Shah | Kushal Diamonds">
   <meta property="og:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
-  <meta id="ogUrlMeta" property="og:url" content="">
-  <meta id="ogImageMeta" property="og:image" content="Assets/Profile/ProfileThumbnail.png">
-  <meta property="og:image:width" content="160">
-  <meta property="og:image:height" content="160">
+  <meta id="ogUrlMeta" property="og:url" content="https://jayakumarshah.netlify.app/">
+  <meta id="ogImageMeta" property="og:image" content="https://jayakumarshah.netlify.app/Assets/Profile/SharePreview.png">
+  <meta property="og:image:secure_url" content="https://jayakumarshah.netlify.app/Assets/Profile/SharePreview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta id="ogImageAltMeta" property="og:image:alt" content="Jaykumar Shah profile preview">
   <meta id="twitterCardMeta" name="twitter:card" content="summary_large_image">
   <meta id="twitterTitleMeta" name="twitter:title" content="Jaykumar Shah | Kushal Diamonds">
   <meta id="twitterDescriptionMeta" name="twitter:description" content="Professional digital profile for Kushal Diamonds and Jaykumar Shah.">
-  <meta id="twitterImageMeta" name="twitter:image" content="Assets/Profile/ProfileThumbnail.png">
+  <meta id="twitterImageMeta" name="twitter:image" content="https://jayakumarshah.netlify.app/Assets/Profile/SharePreview.png">
   <meta id="twitterImageAltMeta" name="twitter:image:alt" content="Jaykumar Shah profile preview">
   <title>Jaykumar Shah | Kushal Diamonds</title>
-  <link id="canonicalLink" rel="canonical" href="">
+  <link id="canonicalLink" rel="canonical" href="https://jayakumarshah.netlify.app/">
   <link id="faviconSvgLink" rel="icon" type="image/svg+xml" href="Assets/favicon.svg">
   <link id="faviconPngLink" rel="icon" type="image/png" href="Assets/Profile/ProfileThumbnail.png">
   <link id="appleTouchIconLink" rel="apple-touch-icon" href="Assets/Profile/ProfileThumbnail.png">
-  <link rel="preload" as="image" href="Assets/Profile/ProfileThumbnail.png">
+  <link rel="preload" as="image" href="Assets/Profile/SharePreview.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -249,7 +251,7 @@
       width: 132px;
       height: 132px;
       border-radius: 50%;
-      border: 4px solid #f1f1f1;
+      border: 2px solid #f1f1f1;
       object-fit: cover;
       background: #ffffff;
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
@@ -994,7 +996,7 @@
       .profile-photo {
         width: 96px;
         height: 96px;
-        border-width: 4px;
+        border-width: 2px;
       }
 
       .identity {
@@ -1886,11 +1888,13 @@
       const contact = profile.contact || {};
       const company = profile.company || {};
       const assets = profile.assets || {};
-      const shareImage = assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "";
+      const shareImage = assets.sharePreview || assets.thumbnail || assets.heroVideoPoster || person.profilePhoto || "";
       const resolvedShareImage = resolveUrl(shareImage);
-      const canonicalUrl = window.location.protocol.startsWith("http")
-        ? window.location.href
-        : resolveUrl(company.websiteUrl || "");
+      const canonicalUrl = meta.siteUrl
+        ? resolveUrl(meta.siteUrl)
+        : window.location.protocol.startsWith("http")
+          ? window.location.href
+          : resolveUrl(company.websiteUrl || "");
       const imageAlt = person.name
         ? `${person.name} profile preview`
         : `${branding.companyName || "Kushal Diamonds"} profile preview`;
@@ -1912,8 +1916,8 @@
       setMetaContent('meta[name="twitter:image:alt"]', imageAlt);
       setLinkHref('#canonicalLink', canonicalUrl);
       setLinkHref('#faviconSvgLink', assets.favicon || "Assets/favicon.svg");
-      setLinkHref('#faviconPngLink', shareImage || person.profilePhoto || "");
-      setLinkHref('#appleTouchIconLink', shareImage || person.profilePhoto || "");
+      setLinkHref('#faviconPngLink', assets.thumbnail || person.profilePhoto || shareImage || "");
+      setLinkHref('#appleTouchIconLink', assets.thumbnail || person.profilePhoto || shareImage || "");
 
       if (assets.background) {
         document.documentElement.style.setProperty("--page-bg-image", `url("${assets.background}")`);
