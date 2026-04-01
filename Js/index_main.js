@@ -269,7 +269,7 @@ main();
 
 function generateQrCodePreview(Id) {
     if (!Id) return;
-    let basePath = window.location.origin + window.location.pathname;
+    let basePath = window.location.href.split("?")[0].split("#")[0];
     if (basePath.endsWith("index.html")) {
         basePath = basePath.replace(/index\.html$/, "");
     }
@@ -287,42 +287,44 @@ function imgGenerator() {
     ].filter(Boolean);
     const cardPreview = document.getElementById("download-area");
     if (buttons.length === 0 || !cardPreview) return;
-    // buttons.forEach(btn => btn.style.display = "none");
-    document.getElementById("copyurl-section").style.display = "none";
-    document.getElementById("footer-section-preview").style.display = "none";
-    document.getElementById("footer-link").style.display = "flex";
-    
-    // document.getElementById("Closebtn").style.display = "none";
-    html2canvas(cardPreview, 
-        {   
-            scale: 2,
-            backgroundColor: "#fff",
-            useCORS: true,
-            windowWidth: 2560,
-        })
-    .then((canvas) => {
-        const aspectRatio = canvas.height / canvas.width;
-        const targetWidth = 400;
-        const targetHeight = targetWidth * aspectRatio;
-        const resizedCanvas = document.createElement("canvas");
-        resizedCanvas.width = targetWidth;
-        resizedCanvas.height = targetHeight;
-        const ctx = resizedCanvas.getContext("2d");
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, targetWidth, targetHeight);
-        ctx.drawImage(canvas, 0, 0, targetWidth, targetHeight);
-        const imgData = resizedCanvas.toDataURL("image/jpeg", 1);
-        buttons.forEach((btn) => {
-            btn.href = imgData;
-            btn.download = `${Id}-DigiCard.jpeg`;
-        });
-    })
-    .catch((err) => console.error("Image generation failed:", err));
-    // buttons.forEach(btn => btn.style.display = "block");
-    document.getElementById("copyurl-section").style.display = "flex";
-    document.getElementById("footer-section-preview").style.display = "flex";
-    // document.getElementById("Closebtn").style.display = "flex";
-    document.getElementById("footer-link").style.display = "none";
+    const copySection = document.getElementById("copyurl-section");
+    const footerSection = document.getElementById("footer-section-preview");
+    const footerLink = document.getElementById("footer-link");
+
+    if (copySection) copySection.style.display = "none";
+    if (footerSection) footerSection.style.display = "none";
+    if (footerLink) footerLink.style.display = "flex";
+
+    Promise.resolve()
+      .then(() => html2canvas(cardPreview, {
+          scale: 2,
+          backgroundColor: "#fff",
+          useCORS: true,
+          windowWidth: 2560,
+      }))
+      .then((canvas) => {
+          const aspectRatio = canvas.height / canvas.width;
+          const targetWidth = 400;
+          const targetHeight = targetWidth * aspectRatio;
+          const resizedCanvas = document.createElement("canvas");
+          resizedCanvas.width = targetWidth;
+          resizedCanvas.height = targetHeight;
+          const ctx = resizedCanvas.getContext("2d");
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, targetWidth, targetHeight);
+          ctx.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+          const imgData = resizedCanvas.toDataURL("image/jpeg", 1);
+          buttons.forEach((btn) => {
+              btn.href = imgData;
+              btn.download = `${Id}-DigiCard.jpeg`;
+          });
+      })
+      .catch((err) => console.error("Image generation failed:", err))
+      .finally(() => {
+          if (copySection) copySection.style.display = "flex";
+          if (footerSection) footerSection.style.display = "flex";
+          if (footerLink) footerLink.style.display = "none";
+      });
 }
 
 
@@ -343,12 +345,29 @@ document.getElementById("vcarddownloadBtnMobile")?.addEventListener("click", () 
     a.click();
 });
 
-document.getElementById("copyLink").addEventListener("click", function(e) {
+document.getElementById("copyLink").addEventListener("click", async function(e) {
     e.preventDefault();
     const currentUrl = window.location.href;
-    navigator.clipboard.writeText(currentUrl).then(() => {
-        console.log("Link copied!");
-    });
+
+    try {
+        if (navigator.clipboard?.writeText && window.isSecureContext) {
+            await navigator.clipboard.writeText(currentUrl);
+            return;
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = currentUrl;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        textarea.style.pointerEvents = "none";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+    } catch (error) {
+        console.error("Copy failed:", error);
+    }
 });
 
 const cardPreview = document.getElementById("CardPreview");
